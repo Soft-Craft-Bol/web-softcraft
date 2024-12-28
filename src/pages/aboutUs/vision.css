@@ -1,0 +1,84 @@
+.container-vision {
+  display: flex;
+  width: 100%;
+  margin: 150px 0px;
+}
+
+.image-vision {
+  width: 50%;
+  position: relative;
+}
+
+.image-vision img {
+  position: absolute;
+  border-radius: 10px;
+}
+
+.principal-img img {
+  max-width: 250px;
+  left: 50%;
+}
+
+.secundary-img img {
+  max-width: 300px;
+  left: calc(40% - 175px);
+  top: 50px;
+}
+
+.terniary-img img {
+  max-width: 200px;
+  left: calc(50% - 25px);
+  top: 70%;
+}
+
+.text-vision {
+  max-width: 40%;
+  line-height: 28px;
+}
+
+.text-vision h1 {
+  color: #00bac8;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+  .container-vision {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .image-vision {
+    width: 100%;
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  .image-vision img {
+    position: static;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .principal-img img {
+    max-width: 100%;
+  }
+
+  .secundary-img, .terniary-img {
+    display: none; /* Ocultar imágenes secundarias y terciarias en móviles */
+  }
+
+  .text-vision {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .text-vision h1 {
+    font-size: 1.8rem;
+  }
+
+  .text-vision p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
