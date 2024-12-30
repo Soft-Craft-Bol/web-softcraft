@@ -20,8 +20,8 @@ function Navbar() {
   return (
     <header className="navbar">
       <div className="logo">
-        <img src={ImagenesApp.logo} height="100px" width="100px" alt="Logo" />
-        <h1>SoftCraft</h1>
+        <img src={ImagenesApp.logo} alt="SoftCraft" />
+        <h4>SoftCraft</h4>
       </div>
 
       <nav id="nav" className={menuOpen ? "nav open" : "nav"}>
@@ -63,9 +63,9 @@ function Navbar() {
       </nav>
 
       <div id="icono-nav" onClick={toggleMenu}>
-        {menuOpen ? <FaTimes /> : <GiHamburgerMenu />}
+        {menuOpen ? <FaTimes size={30} /> : <GiHamburgerMenu size={30} />}
       </div>
-
+{/* 
       <div className="redes">
         <Link title="Visítanos en YouTube" to="/" onClick={closeMenu}>
           <FaYoutube />
@@ -77,7 +77,7 @@ function Navbar() {
         >
           <FaFacebookSquare />
         </Link>
-      </div>
+      </div> */}
     </header>
   );
 }
