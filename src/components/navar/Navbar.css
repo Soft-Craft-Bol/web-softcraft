@@ -5,16 +5,18 @@
   padding: 20px;
   position: relative;
 }
-
-.logo {
+.logo{
   display: flex;
   align-items: center;
-  color: var(--primary-color);
-  font-size: 25px;
+  align-items: center;
+  flex-direction: column;
 }
 
 .logo img {
-  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+
 }
 
 #nav {
@@ -24,10 +26,10 @@
 }
 
 #nav a {
-  color: var(--text-color);
+  color: #ffffff;
   text-decoration: none;
-  padding: 5px 10px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
+  font-family: Poppins, sans-serif;
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
 }
@@ -100,6 +102,9 @@
 
   #nav.open {
     display: flex;
+    width: 92%;
+    background: var(--primary-color);
+    z-index: 1;
   }
 
   #icono-nav {

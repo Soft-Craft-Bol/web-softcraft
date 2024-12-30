@@ -91,14 +91,14 @@ function Servicios() {
                     <h3>Inteligencia Artificial</h3>
                     <p>Nuestras soluciones personalizadas te permiten automatizar procesos, optimizar operaciones y tomar decisiones basadas en datos. Desde la predicción de tendencias hasta la personalización de la experiencia del cliente, nuestra IA te ayudará a alcanzar tus objetivos de negocio.</p>
 
-                    {/* <a href="#" onClick={(event) => handleShowModal(
+                    <a href="#" onClick={(event) => handleShowModal(
                             event,
                             'Inteligencia Artificial',
                             [
                                 'La inteligencia artificial (IA) no es solo una tendencia, es el futuro del negocio, y en SoftCraft, estamos comprometidos a ayudarte a estar a la vanguardia de esta revolución tecnológica. Nuestras soluciones de IA están diseñadas para resolver problemas complejos, mejorar la eficiencia operativa y proporcionar una ventaja competitiva a través de la automatización y la toma de decisiones basada en datos. Desde la creación de modelos de machine learning personalizados hasta la implementación de algoritmos de procesamiento de lenguaje natural y visión por computadora, nuestro equipo tiene la experiencia para desarrollar aplicaciones que pueden aprender, adaptarse y mejorar con el tiempo. Ya sea que necesites desarrollar un sistema de recomendación, implementar un chatbot inteligente para servicio al cliente, o analizar grandes volúmenes de datos para obtener insights valiosos, estamos aquí para ayudarte a aprovechar al máximo el poder de la IA. Con SoftCraft, puedes transformar datos crudos en decisiones inteligentes, automatizar tareas repetitivas y crear experiencias de cliente personalizadas que impulsan el crecimiento y la lealtad.'
                             ],
                             [{ src: aiSide, alt: 'Artificial Intelligence' }]
-                        )}>Leer Más</a> */}
+                        )}>Leer Más</a>
                 </div>
             </div>
             <div className="col">
