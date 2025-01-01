@@ -60,24 +60,23 @@ function Navbar() {
         >
           Contáctenos
         </a>
+        <div className="redes">
+          <Link title="Visítanos en YouTube" to="/" onClick={closeMenu}>
+            <FaYoutube size={24} />
+          </Link>
+          <Link
+            title="No te pierdas nuestros post más recientes en Facebook"
+            to="/"
+            onClick={closeMenu}
+          >
+            <FaFacebookSquare size={24} />
+          </Link>
+        </div>
       </nav>
 
       <div id="icono-nav" onClick={toggleMenu}>
         {menuOpen ? <FaTimes size={30} /> : <GiHamburgerMenu size={30} />}
       </div>
-{/* 
-      <div className="redes">
-        <Link title="Visítanos en YouTube" to="/" onClick={closeMenu}>
-          <FaYoutube />
-        </Link>
-        <Link
-          title="No te pierdas nuestros post más recientes en Facebook"
-          to="/"
-          onClick={closeMenu}
-        >
-          <FaFacebookSquare />
-        </Link>
-      </div> */}
     </header>
   );
 }

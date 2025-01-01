@@ -1,84 +1,190 @@
 .container-vision {
   display: flex;
+  flex-wrap: wrap; /* Soporte adicional para pantallas pequeñas */
   width: 100%;
-  margin: 150px 0px;
+  margin: 150px 0;
+  gap: 20px; /* Espaciado entre elementos */
 }
 
 .image-vision {
   width: 50%;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Asegura que las imágenes se ubiquen bien en pantallas pequeñas */
+  opacity: 0;
+  transform: translateY(50px); /* Inicia fuera del viewport */
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.image-vision.in-view {
+  opacity: 1;
+  transform: translateY(0); /* Aparece en su posición final */
 }
 
 .image-vision img {
-  position: absolute;
   border-radius: 10px;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .principal-img img {
   max-width: 250px;
-  left: 50%;
+  animation: float 6s ease-in-out infinite; /* Animación flotante */
 }
 
 .secundary-img img {
   max-width: 300px;
-  left: calc(40% - 175px);
-  top: 50px;
+  animation: fadeInRight 1.5s ease-out;
 }
 
 .terniary-img img {
   max-width: 200px;
-  left: calc(50% - 25px);
-  top: 70%;
+  animation: fadeInLeft 1.5s ease-out;
 }
 
 .text-vision {
   max-width: 40%;
-  line-height: 28px;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(50px); /* Inicia fuera del viewport */
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.text-vision.in-view {
+  margin: 4%;
+  opacity: 1;
+  transform: translateY(0); /* Aparece en su posición final */
 }
 
 .text-vision h1 {
   color: #00bac8;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.text-vision p {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Responsivo para móviles */
 @media (max-width: 768px) {
   .container-vision {
     flex-direction: column;
-    align-items: center;
     text-align: center;
+    gap: 30px;
   }
 
   .image-vision {
     width: 100%;
-    position: static;
-    margin-bottom: 20px;
   }
 
   .image-vision img {
-    position: static;
-    margin: 0 auto;
-    display: block;
-  }
-
-  .principal-img img {
     max-width: 100%;
   }
 
-  .secundary-img, .terniary-img {
+  .secundary-img,
+  .terniary-img {
     display: none; /* Ocultar imágenes secundarias y terciarias en móviles */
   }
 
   .text-vision {
     max-width: 90%;
-    margin: 0 auto;
   }
 
   .text-vision h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .text-vision p {
     font-size: 1rem;
-    line-height: 1.6;
   }
+}
+
+
+@keyframes swapImages {
+  0%, 100% {
+    transform: translateX(0); /* Posición inicial */
+    opacity: 1;
+  }
+  33% {
+    transform: translateX(50px); /* Mueve a la derecha */
+    opacity: 0.7;
+  }
+  66% {
+    transform: translateX(-50px); /* Mueve a la izquierda */
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.image-vision {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.image-vision img {
+  border-radius: 10px;
+  animation: fadeInOut 3s ease-in-out infinite;
+}
+
+.principal-img img {
+  max-width: 250px;
+  animation: swapImages 5s ease-in-out infinite; /* Intercala posiciones */
+}
+
+.secundary-img img {
+  max-width: 300px;
+  animation: swapImages 5s ease-in-out infinite 1s; /* Retraso de 1 segundo */
+}
+
+.terniary-img img {
+  max-width: 200px;
+  animation: swapImages 5s ease-in-out infinite 2s; /* Retraso de 2 segundos */
 }
