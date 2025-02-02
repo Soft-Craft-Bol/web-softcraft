@@ -11,6 +11,7 @@ import trabajo8 from './img/trabajo8.png'
 import trabajo9 from './img/trabajo9.png'
 import samba from './img/samba3.png'
 import AlquilerAmigos from './img/alquiler.png'
+import km from './img/km.png'
 
 
 export default {
@@ -27,4 +28,5 @@ export default {
     "trabajo9": trabajo9,
     "samba": samba,
     "AlquilerAmigos": AlquilerAmigos,
+    "km": km,
 }

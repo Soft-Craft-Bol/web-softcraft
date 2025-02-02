@@ -56,20 +56,6 @@ function Inicio() {
   return (
     <>
       <div className="color-rain"></div>
-      {showModal && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <h2>¡🎉✨ Feliz Año Nuevo 2025 ✨🎉!</h2>
-            <p>
-              En Softcraft, queremos desearte un año lleno de éxitos, alegría y
-              prosperidad. Que todas tus metas se cumplan. 🌟💖
-            </p>
-            <button className="btn btn-close" onClick={closeModal}>
-              Cerrar
-            </button>
-          </div>
-        </div>
-      )}
       <section id="inicio" className="inicio">
         <div className="contenido">
           <Navbar />
