@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { data } from 'framer-motion/client';
-const baseURL = "http://localhost:3000";
+//const baseURL = "http://localhost:3000";
+const baseURL = "https://softcraft-portfolio.vercel.app";
 
 const api = axios.create({
   baseURL: baseURL,
