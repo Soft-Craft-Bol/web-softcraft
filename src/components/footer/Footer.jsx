@@ -12,10 +12,10 @@ function Footer() {
                     <Link to={'/'} className='brand'>SoftCraft</Link>
                     <p>Transformamos ideas en soluciones digitales innovadoras con excelencia en cada línea de código.</p>
                     <ul className='social-icons'>
-                        <li><Link to='https://www.facebook.com/profile.php?id=100093196947866' target='_blank'><FaFacebookSquare /></Link></li>
-                        <li><Link to='https://www.instagram.com/armando_gaspar_mamani/' target='_blank'><FaInstagram /></Link></li>
-                        <li><Link to='https://github.com/gaspar200309' target='_blank'><FaGithub /></Link></li>
-                        <li><Link to='https://www.tiktok.com/@gaspar_629' target='_blank'><FaTiktok /></Link></li>
+                        <li><Link to='https://www.facebook.com/share/15iVfjNcU4/' target='_blank'><FaFacebookSquare /></Link></li>
+                        <li><Link to='https://www.instagram.com/softcraft_bol/' target='_blank'><FaInstagram /></Link></li>
+                        <li><Link to='https://github.com/Soft-Craft-Bol' target='_blank'><FaGithub /></Link></li>
+                        <li><Link to='https://www.tiktok.com/@softcraft6?_t=ZM-8s08UyTh4hJ&_r=1' target='_blank'><FaTiktok /></Link></li>
                         <li><Link to='https://acortar.link/cG9GpM' target='_blank'><FaWhatsapp /></Link></li>
                     </ul>
                 </div>
