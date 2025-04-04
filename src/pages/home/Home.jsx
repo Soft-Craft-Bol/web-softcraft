@@ -10,6 +10,7 @@ import ImagenesApp from "../../assets/ImagenesApp";
 import Chat from "../../components/chat/Chat";
 import Somos from "../aboutUs/Somos";
 import "./Inicio.css";
+import ProcessSteps from "../processSteps/ProcessSteps";
 
 function Inicio() {
   const [showModal, setShowModal] = useState(true);
@@ -94,9 +95,11 @@ function Inicio() {
       <Somos />
       <Vision />
       <Mision />
+      <ProcessSteps />
       <Servicios />
       <Trabajos />
       {/* <Chat /> */}
+      
       <Contacto />
     </>
   );

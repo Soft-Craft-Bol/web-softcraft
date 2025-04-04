@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+.process-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f9f9f9;
+}
+
+.process-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.process-subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0px;
+  
+}
+
+.step-box {
+  flex: 1 1 300px;
+  max-width: 350px;
+  padding: 25px;
+  text-align: center;
+  border: 1px solid #e7e7e7;
+  background: #fff;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  padding-bottom: 7%;
+}
+
+.step-box:hover {
+  transform: scale(1.03); 
+  box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.05); 
+}
+
+.process-section h3 {
+  font-size: 1.1rem;
+  color: #444;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  text-transform: capitalize;
+  margin-bottom: 8px;
+  border-bottom: 2px solid #e7e7e7;
+  padding-bottom: 5%;
+}
+
+.process-section h2 {
+  font-size: 3rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.process-section p {
+  font-size: 1rem;
+  color: #747474;
+  line-height: 1.5;
+}
+.step-box h1{
+  font-size: 5.5rem;
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .step-box {
+    max-width: 90%;
+  }
+  
+}
