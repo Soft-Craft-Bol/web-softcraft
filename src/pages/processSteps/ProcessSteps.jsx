@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ProcessSteps.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const steps = [
   {
     title: "CONTÁCTANOS",
@@ -29,19 +31,29 @@ const steps = [
     description:
       "Con una estrategia bien definida, nuestro equipo inicia la fase de desarrollo. Aquí es donde damos vida a tu proyecto, asegurando que cada elemento se construya con precisión y calidad. Implementamos metodologías ágiles para optimizar tiempos, mantener flexibilidad y permitir ajustes en el proceso.",
   },
-  
 ];
 
 const ProcessSteps = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
   return (
     <section className="process-section">
-      <h1 className="process-title">Nuestro Proceso de Trabajo</h1>
-      <p className="process-subtitle">
+      <h1 className="process-title" data-aos="fade-up">
+        Nuestro Proceso de Trabajo
+      </h1>
+      <p className="process-subtitle" data-aos="fade-up" data-aos-delay="200">
         Te acompañamos en cada etapa del desarrollo, asegurando claridad, eficiencia y resultados de calidad.
       </p>
       <div className="container">
         {steps.map((item, index) => (
-          <div key={index} className="step-box">
+          <div
+            key={index}
+            className="step-box"
+            data-aos="fade-up"
+            data-aos-delay={index * 200}
+          >
             <h3>{item.title}</h3>
             <h2>{item.step}</h2>
             <h1>{item.number}</h1>

@@ -23,7 +23,6 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 0px;
-  /* width: 90%; */
   
 }
 
@@ -33,15 +32,13 @@
   padding: 25px;
   text-align: center;
   border: 1px solid #e7e7e7;
-  /* border-radius: 12px; */
   background: #fff;
   box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
   padding-bottom: 7%;
 }
 
 .step-box:hover {
-  /* transform: translateY(-5px); */
   transform: scale(1.03); 
   box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.05); 
 }
