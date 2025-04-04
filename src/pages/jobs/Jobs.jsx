@@ -28,7 +28,7 @@ function Trabajos() {
 
     return (
         <section className="trabajos" id="trabajos">
-            <h2>Mis Trabajos</h2>
+            <h2>Nuestros Trabajos</h2>
             <nav>
             <button className={`${categoriaSeleccionada === 'todos' ? 'borde active' : ''}`} onClick={() => filtrarTrabajos('todos')}>Todos</button>
             <button className={`${categoriaSeleccionada === 'disenio' ? 'borde active' : ''}`} onClick={() => filtrarTrabajos('disenio')}>Diseño</button>
