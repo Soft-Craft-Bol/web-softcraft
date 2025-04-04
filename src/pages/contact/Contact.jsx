@@ -15,7 +15,7 @@ function Contacto() {
             </div>
             <div className="info">
               <h3>Teléfono:</h3>
-              <p>+591 62982552</p>
+              <p>+591 71486093</p>
             </div>
             <div className="info">
               <h3>País</h3>
