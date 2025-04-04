@@ -70,7 +70,34 @@
   top: 20px;
   width: 100%;
   height: 100px;
+  resize: none;
 }
 .contacto input::placeholder {
+  color: #ffffff;
+}
+/* select */
+.contacto select {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+  margin-bottom: 20px;
+  outline: none;
+  color: #ffffff;
+  /* font-size: 16px; */
+  cursor: pointer;
+}
+.contacto select option:disabled {
+  color: #ffffff;
+  background-color: transparent;
+}
+.contacto select option {
+  color: #000;
+  background-color: #fff;
+}
+.contacto select:hover,
+.contacto select:focus {
+  border-color: #ffffff;
   color: #ffffff;
 }
