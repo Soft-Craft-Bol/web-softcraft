@@ -24,7 +24,7 @@ function Trabajos() {
 
     const trabajosFiltrados = categoriaSeleccionada === 'todos'
         ? trabajosData
-        : trabajosData.filter(trabajo => trabajo.categoria === categoria Seleccionada);
+        : trabajosData.filter(trabajo => trabajo.categoria === categoriaSeleccionada);
 
     return (
         <section className="trabajos" id="trabajos">
