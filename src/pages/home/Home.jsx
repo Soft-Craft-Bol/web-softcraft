@@ -56,10 +56,13 @@ function Inicio() {
 
   return (
     <>
-      <div className="color-rain"></div>
-      <section id="inicio" className="inicio">
-        <div className="contenido">
           <Navbar />
+
+      <div className="color-rain"></div>
+      
+      <section id="inicio" className="inicio">
+      
+        <div className="contenido">
           <div className="fila">
             <div className="col scroll-effect">
               <h2>Soluciones web personalizadas.</h2>
@@ -72,7 +75,7 @@ function Inicio() {
                 className="btn btn-1"
                 onClick={() =>
                   openWhatsApp(
-                    "62982552",
+                    "71486093",
                     "Hola, estoy interesado en conocer más sobre sus servicios."
                   )
                 }

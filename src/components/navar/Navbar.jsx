@@ -1,84 +1,41 @@
-import { useState } from "react";
-import ImagenesApp from "../../assets/ImagenesApp";
-import { Link, useLocation } from "react-router-dom";
-import { FaFacebookSquare, FaYoutube, FaTimes } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
-import "./Navbar.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import ImagenesApp from '../../assets/ImagenesApp';
+import './Navbar.css';
 
-function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const closeMenu = () => {
-    setMenuOpen(false);
+    setIsOpen(!isOpen);
   };
 
   return (
-    <header className="navbar">
+    <nav className="navbar">
       <div className="logo">
-        <img src={ImagenesApp.logo} alt="SoftCraft" />
+        <img src={ImagenesApp.logo} alt="Logo" />
         <h4>SoftCraft</h4>
       </div>
 
-      <nav id="nav" className={menuOpen ? "nav open" : "nav"}>
-        <a
-          href="/"
-          onClick={closeMenu}
-          className={location.pathname === "/" ? "active" : ""}
-        >
-          Inicio
-        </a>
-        <a
-          href="#servicios"
-          onClick={closeMenu}
-          className={location.hash === "#servicios" ? "active" : ""}
-        >
-          Servicios
-        </a>
-        <a
-          href="#habilidades"
-          onClick={closeMenu}
-          className={location.hash === "#habilidades" ? "active" : ""}
-        >
-          Acerca de
-        </a>
-        <a
-          href="#trabajos"
-          onClick={closeMenu}
-          className={location.hash === "#trabajos" ? "active" : ""}
-        >
-          Trabajos
-        </a>
-        <a
-          href="#contacto"
-          onClick={closeMenu}
-          className={location.hash === "#contacto" ? "active" : ""}
-        >
-          Contáctenos
-        </a>
-        <div className="redes">
-          <Link title="Visítanos en YouTube" to="/" onClick={closeMenu}>
-            <FaYoutube size={24} />
-          </Link>
-          <Link
-            title="No te pierdas nuestros post más recientes en Facebook"
-            to="/"
-            onClick={closeMenu}
-          >
-            <FaFacebookSquare size={24} />
-          </Link>
-        </div>
-      </nav>
+      <div className={`nav-links ${isOpen ? 'open' : ''}`} id="nav">
+        <Link to="/" onClick={() => setIsOpen(false)}>Inicio</Link>
+        <Link to="/servicios" onClick={() => setIsOpen(false)}>Servicios</Link>
+        <Link to="/trabajos" onClick={() => setIsOpen(false)}>Trabajos</Link>
+        <Link to="/nosotros" onClick={() => setIsOpen(false)}>Nosotros</Link>
+        <Link to="/contacto" onClick={() => setIsOpen(false)}>Contacto</Link>
 
-      <div id="icono-nav" onClick={toggleMenu}>
-        {menuOpen ? <FaTimes size={30} /> : <GiHamburgerMenu size={30} />}
+        <div className="redes">
+          <a href="#"><i className="fab fa-facebook"></i></a>
+          <a href="#"><i className="fab fa-instagram"></i></a>
+          <a href="#"><i className="fab fa-linkedin"></i></a>
+        </div>
       </div>
-    </header>
+
+      <div className="menu-icon" id="icono-nav" onClick={toggleMenu}>
+        <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'}`}></i>
+      </div>
+    </nav>
   );
-}
+};
 
 export default Navbar;
