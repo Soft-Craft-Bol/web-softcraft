@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-17T17:07:40.774Z",
+  "title": "Design System: SoftCraft Bolivia",
+  "extensions": {
+    "colorMeta": {
+      "magenta-block": {
+        "role": "primary",
+        "displayName": "magenta block",
+        "tonalRamp": [
+          "oklch(15% 0.1873 334.12)",
+          "oklch(26.43% 0.1873 334.12)",
+          "oklch(37.86% 0.1873 334.12)",
+          "oklch(49.29% 0.1873 334.12)",
+          "oklch(60.71% 0.1873 334.12)",
+          "oklch(72.14% 0.1873 334.12)",
+          "oklch(83.57% 0.1873 334.12)",
+          "oklch(95% 0.1873 334.12)"
+        ]
+      },
+      "magenta-logo": {
+        "role": "primary",
+        "displayName": "magenta logo",
+        "tonalRamp": [
+          "oklch(15% 0.2088 334.49)",
+          "oklch(26.43% 0.2088 334.49)",
+          "oklch(37.86% 0.2088 334.49)",
+          "oklch(49.29% 0.2088 334.49)",
+          "oklch(60.71% 0.2088 334.49)",
+          "oklch(72.14% 0.2088 334.49)",
+          "oklch(83.57% 0.2088 334.49)",
+          "oklch(95% 0.2088 334.49)"
+        ]
+      },
+      "coral-block": {
+        "role": "secondary",
+        "displayName": "coral block",
+        "tonalRamp": [
+          "oklch(15% 0.1633 10.27)",
+          "oklch(26.43% 0.1633 10.27)",
+          "oklch(37.86% 0.1633 10.27)",
+          "oklch(49.29% 0.1633 10.27)",
+          "oklch(60.71% 0.1633 10.27)",
+          "oklch(72.14% 0.1633 10.27)",
+          "oklch(83.57% 0.1633 10.27)",
+          "oklch(95% 0.1633 10.27)"
+        ]
+      },
+      "yellow-block": {
+        "role": "primary",
+        "displayName": "yellow block",
+        "tonalRamp": [
+          "oklch(15% 0.1713 85.19)",
+          "oklch(26.43% 0.1713 85.19)",
+          "oklch(37.86% 0.1713 85.19)",
+          "oklch(49.29% 0.1713 85.19)",
+          "oklch(60.71% 0.1713 85.19)",
+          "oklch(72.14% 0.1713 85.19)",
+          "oklch(83.57% 0.1713 85.19)",
+          "oklch(95% 0.1713 85.19)"
+        ]
+      },
+      "yellow-hover": {
+        "role": "primary",
+        "displayName": "yellow hover",
+        "tonalRamp": [
+          "oklch(15% 0.1453 90.48)",
+          "oklch(26.43% 0.1453 90.48)",
+          "oklch(37.86% 0.1453 90.48)",
+          "oklch(49.29% 0.1453 90.48)",
+          "oklch(60.71% 0.1453 90.48)",
+          "oklch(72.14% 0.1453 90.48)",
+          "oklch(83.57% 0.1453 90.48)",
+          "oklch(95% 0.1453 90.48)"
+        ]
+      },
+      "orange-logo": {
+        "role": "tertiary",
+        "displayName": "orange logo",
+        "tonalRamp": [
+          "oklch(15% 0.1975 42.87)",
+          "oklch(26.43% 0.1975 42.87)",
+          "oklch(37.86% 0.1975 42.87)",
+          "oklch(49.29% 0.1975 42.87)",
+          "oklch(60.71% 0.1975 42.87)",
+          "oklch(72.14% 0.1975 42.87)",
+          "oklch(83.57% 0.1975 42.87)",
+          "oklch(95% 0.1975 42.87)"
+        ]
+      },
+      "red-logo": {
+        "role": "secondary",
+        "displayName": "red logo",
+        "tonalRamp": [
+          "oklch(15% 0.2309 21.16)",
+          "oklch(26.43% 0.2309 21.16)",
+          "oklch(37.86% 0.2309 21.16)",
+          "oklch(49.29% 0.2309 21.16)",
+          "oklch(60.71% 0.2309 21.16)",
+          "oklch(72.14% 0.2309 21.16)",
+          "oklch(83.57% 0.2309 21.16)",
+          "oklch(95% 0.2309 21.16)"
+        ]
+      },
+      "dark-bg": {
+        "role": "neutral",
+        "displayName": "dark bg",
+        "tonalRamp": [
+          "oklch(15% 0.0294 323.82)",
+          "oklch(26.43% 0.0294 323.82)",
+          "oklch(37.86% 0.0294 323.82)",
+          "oklch(49.29% 0.0294 323.82)",
+          "oklch(60.71% 0.0294 323.82)",
+          "oklch(72.14% 0.0294 323.82)",
+          "oklch(83.57% 0.0294 323.82)",
+          "oklch(95% 0.0294 323.82)"
+        ]
+      },
+      "dark-bg-soft": {
+        "role": "neutral",
+        "displayName": "dark bg soft",
+        "tonalRamp": [
+          "oklch(15% 0.0454 326.99)",
+          "oklch(26.43% 0.0454 326.99)",
+          "oklch(37.86% 0.0454 326.99)",
+          "oklch(49.29% 0.0454 326.99)",
+          "oklch(60.71% 0.0454 326.99)",
+          "oklch(72.14% 0.0454 326.99)",
+          "oklch(83.57% 0.0454 326.99)",
+          "oklch(95% 0.0454 326.99)"
+        ]
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "dark surface",
+        "tonalRamp": [
+          "oklch(15% 0.0501 330.04)",
+          "oklch(26.43% 0.0501 330.04)",
+          "oklch(37.86% 0.0501 330.04)",
+          "oklch(49.29% 0.0501 330.04)",
+          "oklch(60.71% 0.0501 330.04)",
+          "oklch(72.14% 0.0501 330.04)",
+          "oklch(83.57% 0.0501 330.04)",
+          "oklch(95% 0.0501 330.04)"
+        ]
+      },
+      "dark-surface-strong": {
+        "role": "neutral",
+        "displayName": "dark surface strong",
+        "tonalRamp": [
+          "oklch(15% 0.0589 334.65)",
+          "oklch(26.43% 0.0589 334.65)",
+          "oklch(37.86% 0.0589 334.65)",
+          "oklch(49.29% 0.0589 334.65)",
+          "oklch(60.71% 0.0589 334.65)",
+          "oklch(72.14% 0.0589 334.65)",
+          "oklch(83.57% 0.0589 334.65)",
+          "oklch(95% 0.0589 334.65)"
+        ]
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "dark ink",
+        "tonalRamp": [
+          "oklch(15% 0.0164 70.54)",
+          "oklch(26.43% 0.0164 70.54)",
+          "oklch(37.86% 0.0164 70.54)",
+          "oklch(49.29% 0.0164 70.54)",
+          "oklch(60.71% 0.0164 70.54)",
+          "oklch(72.14% 0.0164 70.54)",
+          "oklch(83.57% 0.0164 70.54)",
+          "oklch(95% 0.0164 70.54)"
+        ]
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "dark muted",
+        "tonalRamp": [
+          "oklch(15% 0.0283 338.66)",
+          "oklch(26.43% 0.0283 338.66)",
+          "oklch(37.86% 0.0283 338.66)",
+          "oklch(49.29% 0.0283 338.66)",
+          "oklch(60.71% 0.0283 338.66)",
+          "oklch(72.14% 0.0283 338.66)",
+          "oklch(83.57% 0.0283 338.66)",
+          "oklch(95% 0.0283 338.66)"
+        ]
+      },
+      "dark-faint": {
+        "role": "neutral",
+        "displayName": "dark faint",
+        "tonalRamp": [
+          "oklch(15% 0.0366 330.38)",
+          "oklch(26.43% 0.0366 330.38)",
+          "oklch(37.86% 0.0366 330.38)",
+          "oklch(49.29% 0.0366 330.38)",
+          "oklch(60.71% 0.0366 330.38)",
+          "oklch(72.14% 0.0366 330.38)",
+          "oklch(83.57% 0.0366 330.38)",
+          "oklch(95% 0.0366 330.38)"
+        ]
+      },
+      "dark-accent": {
+        "role": "neutral",
+        "displayName": "dark accent",
+        "tonalRamp": [
+          "oklch(15% 0.1430 47.22)",
+          "oklch(26.43% 0.1430 47.22)",
+          "oklch(37.86% 0.1430 47.22)",
+          "oklch(49.29% 0.1430 47.22)",
+          "oklch(60.71% 0.1430 47.22)",
+          "oklch(72.14% 0.1430 47.22)",
+          "oklch(83.57% 0.1430 47.22)",
+          "oklch(95% 0.1430 47.22)"
+        ]
+      },
+      "dark-pink": {
+        "role": "neutral",
+        "displayName": "dark pink",
+        "tonalRamp": [
+          "oklch(15% 0.1517 9.16)",
+          "oklch(26.43% 0.1517 9.16)",
+          "oklch(37.86% 0.1517 9.16)",
+          "oklch(49.29% 0.1517 9.16)",
+          "oklch(60.71% 0.1517 9.16)",
+          "oklch(72.14% 0.1517 9.16)",
+          "oklch(83.57% 0.1517 9.16)",
+          "oklch(95% 0.1517 9.16)"
+        ]
+      },
+      "light-bg": {
+        "role": "neutral",
+        "displayName": "light bg",
+        "tonalRamp": [
+          "oklch(15% 0.0181 70.25)",
+          "oklch(26.43% 0.0181 70.25)",
+          "oklch(37.86% 0.0181 70.25)",
+          "oklch(49.29% 0.0181 70.25)",
+          "oklch(60.71% 0.0181 70.25)",
+          "oklch(72.14% 0.0181 70.25)",
+          "oklch(83.57% 0.0181 70.25)",
+          "oklch(95% 0.0181 70.25)"
+        ]
+      },
+      "light-bg-soft": {
+        "role": "neutral",
+        "displayName": "light bg soft",
+        "tonalRamp": [
+          "oklch(15% 0.0239 51.16)",
+          "oklch(26.43% 0.0239 51.16)",
+          "oklch(37.86% 0.0239 51.16)",
+          "oklch(49.29% 0.0239 51.16)",
+          "oklch(60.71% 0.0239 51.16)",
+          "oklch(72.14% 0.0239 51.16)",
+          "oklch(83.57% 0.0239 51.16)",
+          "oklch(95% 0.0239 51.16)"
+        ]
+      },
+      "light-surface": {
+        "role": "neutral",
+        "displayName": "light surface",
+        "tonalRamp": [
+          "oklch(15% 0.0085 67.73)",
+          "oklch(26.43% 0.0085 67.73)",
+          "oklch(37.86% 0.0085 67.73)",
+          "oklch(49.29% 0.0085 67.73)",
+          "oklch(60.71% 0.0085 67.73)",
+          "oklch(72.14% 0.0085 67.73)",
+          "oklch(83.57% 0.0085 67.73)",
+          "oklch(95% 0.0085 67.73)"
+        ]
+      },
+      "light-surface-strong": {
+        "role": "neutral",
+        "displayName": "light surface strong",
+        "tonalRamp": [
+          "oklch(15% 0.0250 29.93)",
+          "oklch(26.43% 0.0250 29.93)",
+          "oklch(37.86% 0.0250 29.93)",
+          "oklch(49.29% 0.0250 29.93)",
+          "oklch(60.71% 0.0250 29.93)",
+          "oklch(72.14% 0.0250 29.93)",
+          "oklch(83.57% 0.0250 29.93)",
+          "oklch(95% 0.0250 29.93)"
+        ]
+      },
+      "light-ink": {
+        "role": "neutral",
+        "displayName": "light ink",
+        "tonalRamp": [
+          "oklch(15% 0.0536 330.34)",
+          "oklch(26.43% 0.0536 330.34)",
+          "oklch(37.86% 0.0536 330.34)",
+          "oklch(49.29% 0.0536 330.34)",
+          "oklch(60.71% 0.0536 330.34)",
+          "oklch(72.14% 0.0536 330.34)",
+          "oklch(83.57% 0.0536 330.34)",
+          "oklch(95% 0.0536 330.34)"
+        ]
+      },
+      "light-muted": {
+        "role": "neutral",
+        "displayName": "light muted",
+        "tonalRamp": [
+          "oklch(15% 0.0531 348.17)",
+          "oklch(26.43% 0.0531 348.17)",
+          "oklch(37.86% 0.0531 348.17)",
+          "oklch(49.29% 0.0531 348.17)",
+          "oklch(60.71% 0.0531 348.17)",
+          "oklch(72.14% 0.0531 348.17)",
+          "oklch(83.57% 0.0531 348.17)",
+          "oklch(95% 0.0531 348.17)"
+        ]
+      },
+      "light-faint": {
+        "role": "neutral",
+        "displayName": "light faint",
+        "tonalRamp": [
+          "oklch(15% 0.0489 343.38)",
+          "oklch(26.43% 0.0489 343.38)",
+          "oklch(37.86% 0.0489 343.38)",
+          "oklch(49.29% 0.0489 343.38)",
+          "oklch(60.71% 0.0489 343.38)",
+          "oklch(72.14% 0.0489 343.38)",
+          "oklch(83.57% 0.0489 343.38)",
+          "oklch(95% 0.0489 343.38)"
+        ]
+      },
+      "light-accent": {
+        "role": "neutral",
+        "displayName": "light accent",
+        "tonalRamp": [
+          "oklch(15% 0.1590 35.99)",
+          "oklch(26.43% 0.1590 35.99)",
+          "oklch(37.86% 0.1590 35.99)",
+          "oklch(49.29% 0.1590 35.99)",
+          "oklch(60.71% 0.1590 35.99)",
+          "oklch(72.14% 0.1590 35.99)",
+          "oklch(83.57% 0.1590 35.99)",
+          "oklch(95% 0.1590 35.99)"
+        ]
+      },
+      "light-accent-hot": {
+        "role": "neutral",
+        "displayName": "light accent hot",
+        "tonalRamp": [
+          "oklch(15% 0.1052 72.75)",
+          "oklch(26.43% 0.1052 72.75)",
+          "oklch(37.86% 0.1052 72.75)",
+          "oklch(49.29% 0.1052 72.75)",
+          "oklch(60.71% 0.1052 72.75)",
+          "oklch(72.14% 0.1052 72.75)",
+          "oklch(83.57% 0.1052 72.75)",
+          "oklch(95% 0.1052 72.75)"
+        ]
+      },
+      "light-pink": {
+        "role": "neutral",
+        "displayName": "light pink",
+        "tonalRamp": [
+          "oklch(15% 0.1780 9.44)",
+          "oklch(26.43% 0.1780 9.44)",
+          "oklch(37.86% 0.1780 9.44)",
+          "oklch(49.29% 0.1780 9.44)",
+          "oklch(60.71% 0.1780 9.44)",
+          "oklch(72.14% 0.1780 9.44)",
+          "oklch(83.57% 0.1780 9.44)",
+          "oklch(95% 0.1780 9.44)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Hero ancho",
+        "purpose": "Home; escala móvil específica en DESIGN.md."
+      },
+      "headline": {
+        "displayName": "Titular",
+        "purpose": "Base de secciones con variantes por página."
+      },
+      "body": {
+        "displayName": "Lectura",
+        "purpose": "Párrafos con tinta secundaria del tema."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "color-breath",
+        "value": "18s ease-in-out infinite alternate",
+        "purpose": "Manchas del Home; animation none con movimiento reducido."
+      },
+      {
+        "name": "button-state",
+        "value": "220ms ease",
+        "purpose": "Color y elevación por transform de botones."
+      },
+      {
+        "name": "curtains",
+        "value": "0.6s easeInOut",
+        "purpose": "Retrasos 0.2/0.4/0.6s; reducido 0.01s sin retraso."
+      },
+      {
+        "name": "particles",
+        "value": "speed 0.8 / reduced 0.22; count 92 / reduced 56",
+        "purpose": "Hover repulse detectado en window; reducido no equivale a estático."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "960px"
+      },
+      {
+        "name": "xl",
+        "value": "1200px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón primario",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CTA amarillo general; las bandas y el hero tienen variantes locales documentadas.",
+      "html": "<button class=\"ds-control ds-button\">Contáctanos</button>",
+      "css": ".ds-control{font-family:var(--font-sora,Sora),sans-serif;}.ds-button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:.8rem 1.35rem;border:1px solid transparent;border-radius:8px;font-size:.78rem;font-weight:700;text-decoration:none;cursor:pointer;transition:transform 220ms ease,background 220ms ease,color 220ms ease,border-color 220ms ease}.ds-button{background:#fcbf02;color:#291127}.ds-button:hover{background:#ffd65c;color:#291127;transform:translateY(-3px)}.ds-control:focus-visible{outline:3px solid var(--sc-accent-hot,#fcbf02);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-control{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Botón secundario",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Acción secundaria sobre el fondo del tema.",
+      "html": "<button class=\"ds-control ds-button\">Ver proyectos</button>",
+      "css": ".ds-control{font-family:var(--font-sora,Sora),sans-serif;}.ds-button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:.8rem 1.35rem;border:1px solid transparent;border-radius:8px;font-size:.78rem;font-weight:700;text-decoration:none;cursor:pointer;transition:transform 220ms ease,background 220ms ease,color 220ms ease,border-color 220ms ease}.ds-button{background:var(--sc-bg,#180d19);color:var(--sc-ink,#fff6ec);border-color:var(--sc-line-strong,rgba(250,247,240,.28))}.ds-button:hover{border-color:var(--sc-accent,#ff9761);color:var(--sc-accent,#ff9761)}.ds-control:focus-visible{outline:3px solid var(--sc-accent-hot,#fcbf02);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-control{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Campo de texto",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Etiqueta visible, borde del tema y foco; muestra sin lógica de validación.",
+      "html": "<label class=\"ds-label\" for=\"ds-name\">Nombre *</label><input class=\"ds-control ds-field\" id=\"ds-name\" type=\"text\" />",
+      "css": ".ds-control{font-family:var(--font-sora,Sora),sans-serif;}.ds-label{display:block;margin-bottom:.55rem;color:var(--sc-ink,#fff6ec);font-family:var(--font-sora,Sora),sans-serif;font-size:.75rem;font-weight:600}.ds-field{min-height:52px;padding:.8rem .9rem;border:1px solid var(--sc-line-strong,rgba(250,247,240,.28));border-radius:.7rem;background:transparent;color:var(--sc-ink,#fff6ec);transition:border-color 180ms ease,background 180ms ease}.ds-field:focus{border-color:var(--sc-accent,#ff9761);background:rgba(252,104,25,.04)}.ds-control:focus-visible{outline:3px solid var(--sc-accent-hot,#fcbf02);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-control{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Navegación",
+      "kind": "nav",
+      "refersTo": "nav-item-active",
+      "description": "Muestra de enlaces con texto; no reproduce el controlador del menú móvil.",
+      "html": "<nav aria-label=\"Muestra de navegación\"><a href=\"#inicio\" class=\"ds-control ds-nav\" aria-current=\"page\">Inicio</a><a href=\"#servicios\" class=\"ds-control ds-nav\">Servicios</a></nav>",
+      "css": ".ds-control{font-family:var(--font-sora,Sora),sans-serif;}.ds-nav{display:inline-flex;align-items:center;min-height:44px;gap:.42rem;padding:.55rem .65rem;border-bottom:2px solid transparent;color:var(--sc-muted,#dcc8d5);font-size:.7rem;font-weight:600;letter-spacing:.02em;text-decoration:none;transition:color 180ms ease,border-color 180ms ease}.ds-nav:hover{color:var(--sc-ink,#fff6ec);border-color:var(--sc-accent,#ff9761)}.ds-nav[aria-current]{color:var(--sc-ink,#fff6ec);border-color:#fc354c}.ds-control:focus-visible{outline:3px solid var(--sc-accent-hot,#fcbf02);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-control{transition-duration:.01ms!important}}"
+    },
+    {
+      "name": "Bloque de servicio",
+      "kind": "card",
+      "refersTo": "signal-card",
+      "description": "Enlace completo amarillo del Home; muestra del primer bloque.",
+      "html": "<a class=\"ds-control ds-card\" href=\"#servicios\"><h3>Software a medida</h3><p>Cuando la herramienta genérica no entiende tu operación.</p><svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" aria-hidden=\"true\"><path d=\"M5 19 19 5M5 5h14v14\"/></svg></a>",
+      "css": ".ds-control{font-family:var(--font-sora,Sora),sans-serif;}.ds-card{display:flex;flex-direction:column;align-items:flex-start;padding:2rem;min-height:290px;background:#fcbf02;color:#291127;text-decoration:none}.ds-card h3{font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1.1;max-width:12ch}.ds-card p{font-size:.9rem;line-height:1.8;color:inherit}.ds-card svg{margin-top:auto}.ds-card:hover{color:#291127;transform:translateY(-6px)}.ds-control:focus-visible{outline:3px solid var(--sc-accent-hot,#fcbf02);outline-offset:4px}"
+    },
+    {
+      "name": "Sello de demo",
+      "kind": "chip",
+      "description": "Etiqueta informativa amarilla con tinta ciruela en ambos temas; no es un control.",
+      "html": "<span class=\"ds-stamp\">Demo / ejemplo</span>",
+      "css": ".ds-stamp{display:inline-block;padding:.45rem .65rem;background:#fcbf02;color:#291127;font-family:var(--font-sora,Sora),sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}",
+      "refersTo": "demo-stamp"
+    },
+    {
+      "name": "Servicio desplegable",
+      "kind": "custom",
+      "description": "Details nativo con signo de expansión y contenido visible sin runtime.",
+      "html": "<details class=\"ds-entry\" open><summary class=\"ds-summary\"><span>Desarrollo Web</span><span class=\"ds-expand\" aria-hidden=\"true\">+</span></summary><p>Arquitectura de contenido, interfaz y desarrollo web.</p></details>",
+      "css": ".ds-entry{font-family:var(--font-sora,Sora),sans-serif;color:var(--sc-ink,#fff6ec);border-top:1px solid var(--sc-line-strong,rgba(250,247,240,.28));padding-block:1.4rem}.ds-summary{display:flex;align-items:center;min-height:64px;cursor:pointer;list-style:none;font-size:clamp(1.3rem,3vw,2.4rem);line-height:1.2}.ds-summary::-webkit-details-marker{display:none}.ds-expand{margin-left:auto;font-size:2rem;color:var(--sc-pink,#ff839b)}.ds-entry[open] .ds-expand{transform:rotate(45deg)}.ds-summary:focus-visible{outline:3px solid var(--sc-accent-hot,#fcbf02);outline-offset:5px}.ds-entry p{color:var(--sc-muted,#dcc8d5);font-size:.9rem;line-height:1.8}"
+    }
+  ],
+  "narrative": {
+    "northStar": "El Taller de Color en Movimiento",
+    "overview": "SoftCraft se expresa como un taller de color en movimiento: tipografía ancha, manchas originales y superficies de magenta, coral y amarillo sobre ciruela o crema. La personalidad es audaz, activa y cercana; el color construye composición, ritmo y jerarquía, además de señalar acciones.\n\nLa identidad compartida permite páginas con estructuras diferentes. El logo permanece intacto y ambos temas conservan la energía de marca. El mundo monocromo naranja/azul oscuro y el panel orbital artificial del Home son referencias rechazadas por el usuario.",
+    "keyCharacteristics": [
+      "Color en superficies amplias, sin cuota de señal escasa.",
+      "Titulares compactos y grandes; cuerpo de lectura más pausada.",
+      "Asimetría, bandas y manchas orgánicas con controles claros.",
+      "Partículas interactivas como atmósfera del Home."
+    ],
+    "rules": [
+      {
+        "name": "Color Construye",
+        "body": "El color puede ocupar una sección completa; la legibilidad se resuelve en cada pareja de fondo y texto, sin imponer un acento único.",
+        "section": "colors"
+      },
+      {
+        "name": "Capas con Lectura",
+        "body": "Las manchas y las partículas acompañan al contenido; ninguna capa decorativa debe impedir leer, navegar o pulsar una acción.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do Usar los colores del logo y sus variantes implementadas para bloques, manchas y acciones.",
+      "Do Conservar composiciones distintas por página y el logo intacto.",
+      "Do Mantener etiquetas en español, foco visible y objetivos táctiles de al menos 44 px.",
+      "Do Comprobar ambos temas, teclado, zoom 200% y anchos 320/360/390/768/1280 antes de afirmar conformidad."
+    ],
+    "donts": [
+      "Don't Restablecer señal escasa, naranja único o fondos azul oscuro como identidad global.",
+      "Don't Reintroducir el panel orbital artificial del Home ni confundirlo con las partículas conservadas.",
+      "Don't Convertir las clases sin uso o los defectos de contraste, recorte y movimiento en reglas de diseño.",
+      "Don't Presentar demos o bandas de capacidades como resultados comerciales o personas verificadas.",
+      "Don't Simular entrega o confirmación del formulario visual."
+    ]
+  }
+}

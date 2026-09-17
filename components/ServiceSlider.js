@@ -1,128 +1,94 @@
-// icons
 import {
   RxCrop,
-  RxPencil2,
   RxDesktop,
+  RxPencil2,
   RxReader,
   RxRocket,
-} from "react-icons/rx";
+} from 'react-icons/rx';
 
-import { SiNotion } from "react-icons/si";
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination, Autoplay } from 'swiper';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-// activar módulos
-SwiperCore.use([Pagination, Autoplay]);
-
-// framer motion
-import { motion } from 'framer-motion';
-import { fadeIn } from '../variants';
-
-// data
 const serviceData = [
   {
-    icon: <RxDesktop />,
     title: 'Desarrollo Web',
-    description: 'Creamos sitios y sistemas web rápidos, seguros y escalables.',
+    icon: RxDesktop,
+    problem: 'Necesitas una presencia o un sistema web alineado con tu negocio.',
+    includes: 'Arquitectura de contenido, interfaz y desarrollo web.',
+    benefit: 'Una experiencia digital clara para visitantes y equipos.',
   },
   {
-    icon: <RxPencil2 />,
     title: 'Apps Móviles',
-    description: 'Desarrollamos aplicaciones Android funcionales y modernas.',
+    icon: RxPencil2,
+    problem: 'La experiencia de tus usuarios necesita llegar al contexto móvil.',
+    includes: 'Diseño de flujo, desarrollo móvil y acompañamiento inicial.',
+    benefit: 'Una solución pensada para el día a día del usuario.',
   },
   {
-    icon: <RxCrop />,
     title: 'Software a Medida',
-    description: 'Construimos soluciones personalizadas para tu empresa.',
+    icon: RxCrop,
+    problem: 'Las herramientas genéricas no reflejan la forma real de trabajar.',
+    includes: 'Comprensión del problema, flujos, desarrollo y ajustes según alcance.',
+    benefit: 'Un producto construido alrededor de tu operación.',
   },
   {
-    icon: <RxRocket />,
     title: 'Inteligencia Artificial',
-    description: 'Integramos IA para automatizar y optimizar procesos.',
+    icon: RxRocket,
+    problem: 'Tienes tareas repetitivas o información difícil de procesar manualmente.',
+    includes: 'Exploración del caso, integración de IA y revisión de uso responsable.',
+    benefit: 'Claridad para decidir dónde la IA sí aporta valor.',
   },
   {
-    icon: <RxReader />,
     title: 'Automatización',
-    description: 'Reducimos tareas manuales y mejoramos la eficiencia.',
+    icon: RxReader,
+    problem: 'Un proceso manual tiene demasiados pasos y poca visibilidad.',
+    includes: 'Mapeo del flujo, automatización de tareas y validación del recorrido.',
+    benefit: 'Un proceso más ordenado y fácil de seguir.',
   },
   {
-    icon: <RxDesktop />,
     title: 'DevOps e Infraestructura',
-    description: 'Implementamos entornos seguros, estables y escalables.',
+    icon: RxDesktop,
+    problem: 'Tus entornos y despliegues necesitan orden y continuidad.',
+    includes: 'Configuración, despliegue y acompañamiento técnico según alcance.',
+    benefit: 'Una base preparada para operar y evolucionar.',
   },
   {
-    icon: <RxPencil2 />,
     title: 'Soporte Técnico',
-    description: 'Brindamos mantenimiento y asistencia continua.',
+    icon: RxPencil2,
+    problem: 'Un sistema necesita mantenimiento, atención y mejoras después de publicar.',
+    includes: 'Mantenimiento, asistencia y mejoras continuas.',
+    benefit: 'Acompañamiento para que la solución siga siendo útil.',
   },
 ];
 
 const ServiceSlider = () => {
   return (
-    <motion.div
-      variants={fadeIn('up', 0.3)}
-      initial='hidden'
-      animate='show'
-      exit='hidden'
-      className='w-full '
-    >
-      <Swiper
-        modules={[Pagination, Autoplay]}
-        spaceBetween={20}
-        pagination={false}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-          },
-          1280: {
-            slidesPerView: 3,
-          },
-        }}
-        className='pb-12'
-      >
-        {serviceData.map((item, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className='
-                bg-white/5 hover:bg-white/10
-                border border-white/10
-                rounded-2xl
-                p-8
-                h-[260px]
-                flex flex-col justify-start
-                transition-all duration-300
-                backdrop-blur-sm
-                group
-              '
-            >
-              <div className='text-4xl text-accent mb-4 group-hover:scale-110 transition-all duration-300'>
-                {item.icon}
-              </div>
+    <div className="service-catalog">
+        {serviceData.map((item, index) => {
+          const Icon = item.icon;
 
-              <h3 className='text-lg xl:text-xl font-semibold mb-3'>
-                {item.title}
-              </h3>
-
-              <p className='text-white/70 leading-relaxed text-sm'>
-                {item.description}
-              </p>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </motion.div>
+          return (
+              <details className="service-entry" key={item.title} open={index === 0}>
+                <summary className="service-slide-head">
+                  <span className="service-icon" aria-hidden="true"><Icon /></span>
+                  <h3>{item.title}</h3>
+                  <span className="service-expand" aria-hidden="true">+</span>
+                </summary>
+                <div className="service-facts">
+                  <div className="service-fact">
+                    <span>Resuelve</span>
+                    <p>{item.problem}</p>
+                  </div>
+                  <div className="service-fact">
+                    <span>Incluye</span>
+                    <p>{item.includes}</p>
+                  </div>
+                  <div className="service-fact service-fact-accent">
+                    <span>Te acerca a</span>
+                    <p>{item.benefit}</p>
+                  </div>
+                </div>
+              </details>
+          );
+        })}
+    </div>
   );
 };
 

@@ -1,88 +1,61 @@
-// swiper
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination } from 'swiper';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-SwiperCore.use([Pagination]);
-
-// next image
 import Image from 'next/image';
 
-// framer motion
-import { motion } from 'framer-motion';
-import { fadeIn } from '../variants';
-
-// data
-const workSlides = {
-  slides: [
-    {
-      images: [
-        { title: 'Sistema Web Empresarial', path: '/thumb1.jpg' },
-        { title: 'App Móvil', path: '/thumb2.jpg' },
-        { title: 'Plataforma IA', path: '/thumb3.jpg' },
-        { title: 'Dashboard', path: '/thumb4.jpg' },
-      ],
-    },
-    {
-      images: [
-        { title: 'E-commerce', path: '/thumb4.jpg' },
-        { title: 'Landing Page', path: '/thumb1.jpg' },
-        { title: 'Sistema Interno', path: '/thumb2.jpg' },
-        { title: 'Automatización', path: '/thumb3.jpg' },
-      ],
-    },
-  ],
-};
+const workSlides = [
+  {
+    title: 'Portfolio de desarrollo',
+    image: '/thumb1.jpg',
+    description: 'Una referencia visual de portfolio que presenta una identidad profesional y una selección de proyectos.',
+    focus: 'Arquitectura de información y recorrido principal.',
+  },
+  {
+    title: 'Experiencias de realidad virtual',
+    image: '/thumb2.jpg',
+    description: 'Una referencia de sitio web para explorar contenidos y experiencias de realidad virtual.',
+    focus: 'Exploración visual, jerarquía y descubrimiento de contenidos.',
+  },
+  {
+    title: 'Landing de producto financiero',
+    image: '/thumb3.jpg',
+    description: 'Una referencia de presentación web de un producto de criptomonedas. Las cifras de la imagen pertenecen a la muestra, no a SoftCraft.',
+    focus: 'Organización de información y presentación de un producto.',
+  },
+  {
+    title: 'Portfolio de diseño',
+    image: '/thumb4.jpg',
+    description: 'Una referencia de portfolio creativo con proyectos visuales y presentación de servicios.',
+    focus: 'Selección de trabajos, composición y recorrido de contacto.',
+  },
+];
 
 const WorkSlider = () => {
   return (
-    <motion.div
-      variants={fadeIn('up', 0.3)}
-      initial='hidden'
-      animate='show'
-      exit='hidden'
-      className='w-full'
-    >
-      <Swiper
-        spaceBetween={20}
-        pagination={{ clickable: true }}
-        className='pb-10'
-      >
-        {workSlides.slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            
-            {/* GRID */}
-            <div className='grid grid-cols-2 gap-4'>
-              {slide.images.map((item, i) => (
-                <div
-                  key={i}
-                  className='relative group overflow-hidden rounded-xl'
-                >
-                  {/* imagen */}
-                  <Image
-                    src={item.path}
-                    alt={item.title}
-                    width={500}
-                    height={300}
-                    className='object-cover w-full h-[140px] sm:h-[180px] xl:h-[200px] group-hover:scale-110 transition-all duration-300'
-                  />
-
-                  {/* overlay */}
-                  <div className='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center'>
-                    <p className='text-white text-sm font-semibold text-center px-2'>
-                      {item.title}
-                    </p>
-                  </div>
+    <div className="work-slider-shell">
+      <div className="work-gallery">
+        {workSlides.map((item) => (
+            <article className="work-slide" key={item.title}>
+              <div className="work-image-wrap">
+                <Image
+                  src={item.image}
+                  alt={`Vista de muestra: ${item.title}`}
+                  width={900}
+                  height={620}
+                  className="work-image"
+                />
+                <span className="demo-stamp">Demo / ejemplo</span>
+              </div>
+              <div className="work-copy">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <div className="work-focus">
+                  <span>Foco de la pieza</span>
+                  <strong>{item.focus}</strong>
                 </div>
-              ))}
-            </div>
-
-          </SwiperSlide>
+              </div>
+            </article>
         ))}
-      </Swiper>
-    </motion.div>
+      </div>
+      <p className="slider-note">Estas piezas muestran posibilidades de diseño; no representan resultados comerciales publicados.</p>
+    </div>
   );
 };
 

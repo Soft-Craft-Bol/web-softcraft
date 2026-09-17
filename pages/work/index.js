@@ -1,53 +1,36 @@
+import Link from 'next/link';
+import { HiArrowUpRight } from 'react-icons/hi2';
 import WorkSlider from '../../components/WorkSlider';
-
-// framer motion
-import { motion } from 'framer-motion';
-import { fadeIn } from '../../variants';
-
-import Circles from '../../components/Circles';
-import Bulb from '../../components/Bulb';
 
 const Work = () => {
   return (
-    <div className='relative min-h-screen bg-primary/30 py-20 flex items-center overflow-hidden mt-8 xl:mt-0'>
-      <Circles />
-      <div className='hidden xl:block'>
-        <Bulb />
-      </div>
-
-      <div className='container mx-auto'>
-        <div className='flex flex-col xl:flex-row gap-10 items-center'>
-          
-          {/* texto */}
-          <motion.div
-            variants={fadeIn('right', 0.2)}
-            initial='hidden'
-            animate='show'
-            exit='hidden'
-            className='w-full xl:w-[30%] text-center xl:text-left'
-          >
-            <h2 className='h2 mb-6'>
-              Nuestros <span className='text-accent'>proyectos</span>
-            </h2>
-
-            <p className='text-white/70 max-w-[400px] mx-auto xl:mx-0'>
-              Descubre algunos de nuestros trabajos más recientes,
-              donde combinamos diseño, desarrollo e innovación tecnológica.
-            </p>
-          </motion.div>
-
-          {/* slider */}
-          <motion.div
-            variants={fadeIn('left', 0.4)}
-            initial='hidden'
-            animate='show'
-            exit='hidden'
-            className='w-full xl:w-[65%]'
-          >
-            <WorkSlider />
-          </motion.div>
+    <div className="content-page work-page">
+      <section className="page-section page-intro-section" aria-labelledby="work-title">
+        <div className="site-container page-heading-split">
+          <h1 id="work-title" className="section-title">Piezas que muestran cómo pensamos el <span className="accent">producto.</span></h1>
+          <div>
+            <p className="lead">Una selección visual de demos y escenarios conceptuales. La idea es abrir la conversación, no inventar resultados.</p>
+            <Link href="/contact" className="text-link">Hablar de tu proyecto <HiArrowUpRight aria-hidden="true" /></Link>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="page-section page-section-tight work-section" aria-labelledby="work-slider-title">
+        <div className="site-container">
+          <div className="section-label-row">
+            <h2 id="work-slider-title">Demos seleccionadas</h2>
+            <span>piezas de muestra / sin cifras comerciales</span>
+          </div>
+          <WorkSlider />
+        </div>
+      </section>
+
+      <section className="page-section work-cta-section">
+        <div className="site-container work-cta-inner">
+          <h2 className="section-title">Tu problema puede ser la próxima pieza.</h2>
+          <Link href="/contact" className="button-primary">Cuéntanos la idea <HiArrowUpRight aria-hidden="true" /></Link>
+        </div>
+      </section>
     </div>
   );
 };

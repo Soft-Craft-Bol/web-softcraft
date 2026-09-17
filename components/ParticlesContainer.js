@@ -1,8 +1,13 @@
-import {Particles} from 'react-tsparticles';
-import {loadFull} from 'tsparticles';
-import React, {useCallback} from 'react';
+import { Particles } from 'react-tsparticles';
+import { loadFull } from 'tsparticles';
+import React, { useCallback } from 'react';
+import { useTheme } from './ThemeContext';
+import usePrefersReducedMotion from './usePrefersReducedMotion';
 
 const ParticlesContainer = () => {
+  const { theme } = useTheme();
+  const reducedMotion = usePrefersReducedMotion();
+
   const particlesInit = useCallback(async (engine) => {
     await loadFull(engine);
   }, []);
@@ -11,81 +16,55 @@ const ParticlesContainer = () => {
 
   return (
     <Particles
-      className='w-full h-full absolute transalate-z-0'
-      id='tsparticles'
+      className="particle-canvas"
+      id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
       options={{
-        fullScreen: {enable: false},
-        background: {
-          color: {
-            value: "",
-          },
-        },  
-        fpsLimit: 120,
+        fullScreen: { enable: false },
+        fpsLimit: 60,
         interactivity: {
+          detectsOn: 'window',
           events: {
-            onClick: {
-              enable: false
-            },
-            onHover: {
-              enable: true,
-              mode: "repulse",  
-            },
-            resize: true
+            onClick: { enable: false },
+            onHover: { enable: true, mode: 'repulse' },
+            resize: true,
           },
           modes: {
-            push: {
-              quantity: 90
-            },
             repulse: {
-              distance: 200,
-              duration: 0.4
-            }
-          }
+              distance: reducedMotion ? 105 : 180,
+              duration: reducedMotion ? 0.2 : 0.4,
+            },
+          },
         },
         particles: {
-          color: {
-            value: "#e68e2e"
-          },
+          color: { value: theme === 'light' ? ['#9A0389', '#b23046'] : ['#FCBF02', '#FC354C', '#ffffff'] },
           links: {
-            color: "#f5d393",
-            distance: 150,
+            color: theme === 'light' ? '#9A0389' : '#fff0d8',
+            distance: 145,
             enable: true,
-            opacity: 0.5,
-            width: 1
+            opacity: theme === 'light' ? 0.18 : 0.25,
+            width: 1,
           },
-          collisions: {
-            enable: true
-          },
+          collisions: { enable: false },
           move: {
-            direction: "none",
+            direction: 'none',
+            // La versión calmada conserva el movimiento suave solicitado por el dueño.
             enable: true,
-            outModes: {
-              default: "bounce"
-            },
+            outModes: { default: 'bounce' },
             random: false,
-            speed: 1,
-            straight: false
+            speed: reducedMotion ? 0.22 : 0.8,
+            straight: false,
           },
           number: {
-            density: {
-              enable: true,
-              area: 800
-            },
-            value: 80
+            density: { enable: true, area: 800 },
+            value: reducedMotion ? 56 : 92,
           },
-          opacity: {
-            value: 0.5
-          },
-          shape: {
-            type:"circle"
-          },
-          size:{
-            value: {min: 1, max: 5}
-          }
+          opacity: { value: reducedMotion ? { min: 0.2, max: 0.62 } : { min: 0.28, max: 0.86 } },
+          shape: { type: 'circle' },
+          size: { value: { min: 1.2, max: 3.4 } },
         },
-        detectRetina: true
+        detectRetina: true,
       }}
     />
   );

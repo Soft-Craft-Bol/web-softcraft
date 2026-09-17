@@ -1,51 +1,44 @@
-// framer motion
-import {motion} from 'framer-motion'
-
-//variants
+import { motion, useReducedMotion } from 'framer-motion';
 
 const transitionVariants = {
-  initial: {
-    x: '100%', 
-    with: '100%'
-  }, 
-  animate: {
-    x: '0%',
-    with: '0%',
-  },
-  exit: {
-    x: ['0%', '100%'],
-    with: ['0%', '100%'],
-  },
-}
+  initial: { x: '100%' },
+  animate: { x: '0%' },
+  exit: { x: ['0%', '100%'] },
+};
 
 const Transition = () => {
+  const reducedMotion = useReducedMotion();
+  const duration = reducedMotion ? 0.01 : 0.6;
+
   return (
     <>
-      <motion.div 
-      className='fixed top-0 bottom-0 right-full w-screen h-screen z-30 bg-[#422f81]'
-      variants={transitionVariants}
-      initial='initial'
-      animate='animate'
-      exit='exit'
-      transition={{delay: 0.2, ease: 'easeInOut', duration: 0.6}}>
-      </motion.div>
-      <motion.div 
-      className='fixed top-0 bottom-0 right-full w-screen h-screen z-20 bg-[#3b2d71]'
-      variants={transitionVariants}
-      initial='initial'
-      animate='animate'
-      exit='exit'
-      transition={{delay: 0.4, ease: 'easeInOut', duration: 0.6}}>
-      </motion.div>
-      <motion.div 
-      className='fixed top-0 bottom-0 right-full w-screen h-screen z-10 bg-[#4b3792]'
-      variants={transitionVariants}
-      initial='initial'
-      animate='animate'
-      exit='exit'
-      transition={{delay: 0.6, ease: 'easeInOut', duration: 0.6}}>
-      </motion.div>
-
+      <motion.div
+        aria-hidden="true"
+        className="route-curtain route-curtain-one"
+        variants={transitionVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={{ delay: reducedMotion ? 0 : 0.2, ease: 'easeInOut', duration }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="route-curtain route-curtain-two"
+        variants={transitionVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={{ delay: reducedMotion ? 0 : 0.4, ease: 'easeInOut', duration }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="route-curtain route-curtain-three"
+        variants={transitionVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={{ delay: reducedMotion ? 0 : 0.6, ease: 'easeInOut', duration }}
+      />
     </>
   );
 };

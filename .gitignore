@@ -28,3 +28,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+AGENTS.md
+PRODUCT.md
+/specs
+/docs
