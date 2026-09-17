@@ -1,31 +1,20 @@
 import '../styles/globals.css';
 import '../styles/personality.css';
 import Head from 'next/head';
-
-// components
 import Layout from '../components/Layout';
-import Transition from '../components/Transition';
-
-// router
-import { useRouter } from 'next/router';
-
-// framer motion
-import { AnimatePresence, motion } from 'framer-motion';
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-
   return (
     <>
       <Head>
         <title>SoftCraft Bolivia | Software a medida e IA aplicada</title>
         <meta
           name="description"
-          content="SoftCraft Bolivia convierte problemas de operación en software a medida, automatización e IA aplicada con acompañamiento continuo."
+          content="SoftCraft Bolivia convierte problemas de operación en software a medida, automatización e IA aplicada con acompañamiento continuo y artesanía técnica."
         />
         <meta
           name="keywords"
-          content="desarrollo de software, inteligencia artificial, soluciones tecnológicas, Bolivia"
+          content="desarrollo de software, inteligencia artificial, software a medida, soluciones tecnológicas, Bolivia, Cochabamba"
         />
         <meta name="author" content="SoftCraft Bolivia" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -49,12 +38,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <Layout>
-        <AnimatePresence mode="wait">
-          <motion.div key={router.asPath} className="route-view">
-            <Transition />
-            <Component {...pageProps} />
-          </motion.div>
-        </AnimatePresence>
+        <div className="route-view">
+          <Component {...pageProps} />
+        </div>
       </Layout>
     </>
   );

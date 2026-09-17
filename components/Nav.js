@@ -31,7 +31,7 @@ const Nav = () => {
 
   useEffect(() => {
     setMenuOpen(false);
-  }, [router.pathname]);
+  }, [router?.pathname]);
 
   useEffect(() => {
     const closeOnEscape = (event) => {
@@ -62,7 +62,10 @@ const Nav = () => {
       >
         {navData.map((link) => {
           const Icon = link.icon;
-          const isActive = link.path === '/' ? router.pathname === '/' : router.pathname.startsWith(link.path);
+          const isActive =
+            link.path === '/'
+              ? router.pathname === '/'
+              : router.pathname === link.path || router.pathname.startsWith(`${link.path}/`);
 
           return (
             <Link
