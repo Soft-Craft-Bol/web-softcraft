@@ -119,8 +119,9 @@ export const TransitionProvider = ({ children }) => {
       navigateTo(href);
     };
 
-    document.addEventListener('click', handleAnchorClick);
-    return () => document.removeEventListener('click', handleAnchorClick);
+    // Ejecutar antes del manejador interno de Next Link para conservar la cortina.
+    document.addEventListener('click', handleAnchorClick, true);
+    return () => document.removeEventListener('click', handleAnchorClick, true);
   }, [navigateTo]);
 
   return (
