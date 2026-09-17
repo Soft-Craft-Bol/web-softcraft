@@ -60,7 +60,6 @@ const TestimonialSlider = () => {
         }}
         pagination={{
           clickable: true,
-          bulletActiveClass: 'swiper-pagination-bullet-active !bg-[var(--sc-accent)] !w-8 !rounded-full',
         }}
         keyboard={{ enabled: true }}
         a11y={{ paginationBulletMessage: 'Ir al testimonio {{index}}' }}

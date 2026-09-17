@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import usePrefersReducedMotion from './usePrefersReducedMotion';
 
@@ -13,6 +13,22 @@ export const TransitionProvider = ({ children }) => {
   const reducedMotion = usePrefersReducedMotion();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [stage, setStage] = useState('idle');
+  const timersRef = useRef([]);
+  const isNavigatingRef = useRef(false);
+
+  const clearTimers = useCallback(() => {
+    timersRef.current.forEach((timer) => window.clearTimeout(timer));
+    timersRef.current = [];
+  }, []);
+
+  const schedule = useCallback((callback, delay) => {
+    const timer = window.setTimeout(() => {
+      timersRef.current = timersRef.current.filter((activeTimer) => activeTimer !== timer);
+      callback();
+    }, delay);
+    timersRef.current.push(timer);
+    return timer;
+  }, []);
 
   const navigateTo = useCallback(
     (targetHref) => {
@@ -34,36 +50,46 @@ export const TransitionProvider = ({ children }) => {
         return;
       }
 
+      if (isNavigatingRef.current) {
+        return;
+      }
+
       if (reducedMotion) {
         router.push(targetHref);
         window.scrollTo(0, 0);
         return;
       }
 
-      // Iniciar cobertura de cortina
+      isNavigatingRef.current = true;
       setIsTransitioning(true);
       setStage('covering');
 
-      // Tiempo para que las cortinas cubran totalmente la pantalla (350ms)
-      setTimeout(() => {
-        // Ejecutar cambio de ruta con scroll deshabilitado de Next.js
-        router.push(targetHref, undefined, { scroll: false }).then(() => {
-          // Resetear el scroll mientras la pantalla está 100% cubierta
-          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      schedule(() => {
+        router
+          .push(targetHref, undefined, { scroll: false })
+          .then(() => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
 
-          // Breve respiro y destapar la cortina
-          setTimeout(() => {
-            setStage('uncovering');
-            setTimeout(() => {
-              setIsTransitioning(false);
-              setStage('idle');
-            }, 360);
-          }, 80);
-        });
+            schedule(() => {
+              setStage('uncovering');
+              schedule(() => {
+                setIsTransitioning(false);
+                setStage('idle');
+                isNavigatingRef.current = false;
+              }, 360);
+            }, 80);
+          })
+          .catch(() => {
+            setIsTransitioning(false);
+            setStage('idle');
+            isNavigatingRef.current = false;
+          });
       }, 360);
     },
-    [router, reducedMotion]
+    [router, reducedMotion, schedule]
   );
+
+  useEffect(() => () => clearTimers(), [clearTimers]);
 
   // Interceptar clics en todos los enlaces internos
   useEffect(() => {

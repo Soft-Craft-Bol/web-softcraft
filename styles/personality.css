@@ -162,8 +162,9 @@ input, textarea { caret-color: var(--sc-pink); }
 .home-process-section { background: radial-gradient(ellipse at 0% 90%, rgba(200, 30, 142, 0.12), transparent 70%), var(--sc-bg); }
 .home-contact-band { background: linear-gradient(120deg, #1c0a18, #2a0f24); border-block: 1px solid rgba(255, 111, 157, 0.3); }
 .home-contact-band p { color: #fff3ec; }
+.home-contact-band .contact-band-inner p { color: #291127; }
 .home-contact-band .button-primary { box-shadow: 0 0 24px rgba(255, 46, 136, 0.4); }
-.content-page { overflow: clip; }
+.content-page { overflow: clip; padding-block: 0; }
 .page-intro-section { padding-block: clamp(4rem, 8vw, 7rem); }
 .services-page .page-intro-section {
   background: radial-gradient(ellipse at 88% 10%, rgba(255, 46, 136, 0.4) 0%, transparent 55%), radial-gradient(ellipse at 0% 100%, rgba(176, 38, 255, 0.22), transparent 60%), #180915;
@@ -247,7 +248,11 @@ input, textarea { caret-color: var(--sc-pink); }
 .contact-page .page-intro-section .section-title { max-width: 20ch; font-size: clamp(2.5rem, 4.8vw, 4.4rem); }
 .contact-info { padding-top: 2rem; }
 .contact-form { border: 1px solid rgba(255, 111, 157, 0.3); border-top: 0; border-radius: 0 0 16px 16px; box-shadow: 0 0 30px rgba(255, 46, 136, 0.12); }
+.contact-details .contact-detail { display: flex; }
 .contact-detail > svg:first-child { color: var(--sc-pink); }
+.contact-detail > .flex { flex: 1 1 0%; min-width: 0; }
+.contact-detail > .flex > div:last-child { flex: 1 1 auto; min-width: 0; }
+.contact-detail > .flex > div:last-child > span:not(small) { overflow-wrap: normal; word-break: break-word; }
 .site-footer { background: radial-gradient(ellipse at 100% 100%, rgba(200, 30, 142, 0.16), transparent 65%), var(--sc-bg); border-top: 1px solid rgba(255, 111, 157, 0.35); }
 .footer-cta .section-title { max-width: 18ch; }
 .swiper-pagination-bullet { min-width: 24px; min-height: 24px; border: 7px solid var(--sc-bg-soft); }
