@@ -1,46 +1,26 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { WIPE } from './useRouteWipe';
 
-const transitionVariants = {
-  initial: { x: '100%' },
-  animate: { x: '0%' },
-  exit: { x: ['0%', '100%'] },
-};
+// Barrido de tinta: el papel teñido, dos tintas puras y el papel del tema
+// activo, que cierra la pasada. El cambio de página ocurre debajo, ya cubierto.
+const bands = ['route-band-1', 'route-band-2', 'route-band-3', 'route-band-4'];
 
-const Transition = () => {
-  const reducedMotion = useReducedMotion();
-  const duration = reducedMotion ? 0.01 : 0.6;
-
-  return (
-    <>
-      <motion.div
-        aria-hidden="true"
-        className="route-curtain route-curtain-one"
-        variants={transitionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ delay: reducedMotion ? 0 : 0.2, ease: 'easeInOut', duration }}
+const Transition = () => (
+  <div className="route-curtains" aria-hidden="true">
+    {bands.map((band, index) => (
+      <motion.span
+        key={band}
+        className={`route-curtain ${band}`}
+        initial={{ y: '100%' }}
+        animate={{ y: '-100%' }}
+        transition={{
+          duration: WIPE.duration,
+          delay: index * WIPE.stagger,
+          ease: [0.65, 0, 0.35, 1],
+        }}
       />
-      <motion.div
-        aria-hidden="true"
-        className="route-curtain route-curtain-two"
-        variants={transitionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ delay: reducedMotion ? 0 : 0.4, ease: 'easeInOut', duration }}
-      />
-      <motion.div
-        aria-hidden="true"
-        className="route-curtain route-curtain-three"
-        variants={transitionVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ delay: reducedMotion ? 0 : 0.6, ease: 'easeInOut', duration }}
-      />
-    </>
-  );
-};
+    ))}
+  </div>
+);
 
 export default Transition;

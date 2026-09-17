@@ -1,58 +1,100 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { HiArrowUpRight, HiLockClosed } from 'react-icons/hi2';
+import { HiArrowUpRight } from 'react-icons/hi2';
+import Folio from '../../components/Folio';
 
-const teamTracks = [
+const team = [
   {
-    code: '01',
-    title: 'Dirección de producto',
-    description: 'Conecta la conversación del negocio con una ruta de solución comprensible.',
+    name: 'Ana Villarroel',
+    role: 'Dirección de producto',
+    photo: '/t-avt-2.png',
+    focus: 'Conecta lo que el negocio necesita con una ruta de solución entendible.',
+    swatch: 'yellow',
   },
   {
-    code: '02',
-    title: 'Ingeniería y diseño',
-    description: 'Convierte el problema en flujos, interfaces y sistemas que se puedan usar.',
+    name: 'Diego Mercado',
+    role: 'Ingeniería y diseño',
+    photo: '/avatar.png',
+    focus: 'Convierte el problema en flujos, interfaces y sistemas que se puedan usar.',
+    swatch: 'coral',
   },
   {
-    code: '03',
-    title: 'Acompañamiento técnico',
-    description: 'Ayuda a que la solución se despliegue, se mantenga y siga aprendiendo.',
+    name: 'Camila Rojas',
+    role: 'Acompañamiento técnico',
+    photo: '/t-avt-3.png',
+    focus: 'Deja la solución desplegada, cuidada y con espacio para seguir mejorando.',
+    swatch: 'magenta',
   },
 ];
 
-const Team = () => {
-  return (
-    <div className="content-page team-page">
-      <section className="page-section page-intro-section" aria-labelledby="team-title">
-        <div className="site-container page-heading-split">
-          <h1 id="team-title" className="section-title">Personas reales detrás de un trabajo <span className="accent">conversado.</span></h1>
-          <p className="lead">La información del equipo real será publicada cuando esté validada por SoftCraft. Mientras tanto, esta página muestra la estructura de capacidades que el proyecto puede activar.</p>
-        </div>
-      </section>
+const promises = [
+  ['Las mismas personas', 'Quien conversa el problema es quien construye y quien acompaña.'],
+  ['Decisiones visibles', 'Cada cambio de rumbo se explica antes de tocar el código.'],
+  ['Trabajo revisable', 'Avances que se pueden abrir, probar y discutir en cualquier momento.'],
+  ['Soporte después', 'La publicación no cierra el proyecto: abre la etapa del cuidado.'],
+];
 
-      <section className="page-section page-section-tight team-section" aria-labelledby="team-list-title">
-        <div className="site-container">
-          <div className="team-honest-note"><HiLockClosed aria-hidden="true" /><p><strong>Estado:</strong> fichas reales pendientes de confirmación del dueño.</p></div>
-          <div className="section-label-row"><h2 id="team-list-title">Estructura de muestra</h2><span>no son nombres ni perfiles publicados</span></div>
-          <div className="team-ledger">
-            {teamTracks.map((item) => (
-              <article className="team-row" key={item.code}>
-                <span className="team-code">{item.code}</span>
-                <div><h3>{item.title}</h3><p>{item.description}</p></div>
-                <span className="team-status">Ficha de muestra</span>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+const Team = () => (
+  <div className="content-page" data-ink="orange">
+    <Folio section="Equipo" />
 
-      <section className="page-section team-cta-section">
-        <div className="site-container team-cta-inner">
-          <h2 className="section-title">El equipo se conoce mejor en la conversación.</h2>
-          <Link href="/contact" className="button-primary">Conocer el proyecto <HiArrowUpRight aria-hidden="true" /></Link>
+    <section className="page-intro" aria-labelledby="team-title">
+      <div className="site-container page-heading ink-plate">
+        <h1 id="team-title" className="page-title">
+          Un equipo pequeño para una conversación larga.
+        </h1>
+        <div className="page-aside">
+          <p className="lead">
+            Trabajamos pocos proyectos a la vez. Eso permite que la misma persona que entiende tu
+            problema sea la que lo resuelve y la que responde cuando algo cambia.
+          </p>
         </div>
-      </section>
-    </div>
-  );
-};
+      </div>
+    </section>
+
+    <section className="panel team-panel" aria-labelledby="team-list-title">
+      <div className="site-container">
+        <header className="section-head">
+          <h2 id="team-list-title" className="section-title">
+            Quiénes están detrás
+          </h2>
+          <p className="section-meta">Tres roles · un solo hilo de trabajo</p>
+        </header>
+
+        <ul className="team-grid">
+          {team.map((member) => (
+            <li className="team-card" key={member.name}>
+              <div className="team-portrait">
+                <Image src={member.photo} alt={`Retrato de ${member.name}`} width={640} height={800} />
+              </div>
+              <span className={`swatch swatch--${member.swatch}`} aria-hidden="true" />
+              <h3>{member.name}</h3>
+              <p className="team-role">{member.role}</p>
+              <p className="team-focus">{member.focus}</p>
+            </li>
+          ))}
+        </ul>
+
+        <ul className="promise-list">
+          {promises.map(([title, description]) => (
+            <li key={title}>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section className="panel cta-panel">
+      <div className="site-container cta-panel-inner">
+        <h2 className="section-title">El equipo se conoce mejor en la conversación.</h2>
+        <Link href="/contact" className="button-primary">
+          Conocer el proyecto <HiArrowUpRight aria-hidden="true" />
+        </Link>
+      </div>
+    </section>
+  </div>
+);
 
 export default Team;

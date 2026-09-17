@@ -1,4 +1,3 @@
-
 const processData = [
   {
     number: '01',
@@ -38,24 +37,27 @@ const processData = [
   },
 ];
 
-const ProcessSlider = () => {
-  return (
-    <ol className="process-journey">
-        {processData.map((item) => (
-          <li key={item.number}>
-            <article className="process-slide" aria-label={`${item.number}. ${item.title}`}>
-              <div className="process-slide-number">{item.number}</div>
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <div className="process-expect">
-                <span>Qué puedes esperar</span>
-                <strong>{item.expect}</strong>
-              </div>
-            </article>
-          </li>
-        ))}
-    </ol>
-  );
-};
+const ProcessSlider = () => (
+  <ol className="stage-list">
+    {processData.map((item) => (
+      <li className="stage" key={item.number}>
+        <span className="stage-index" aria-hidden="true">
+          {item.number}
+        </span>
+        <div className="stage-body">
+          <h3>
+            <span className="sr-only">{`${item.number}. `}</span>
+            {item.title}
+          </h3>
+          <p>{item.description}</p>
+        </div>
+        <div className="stage-expect">
+          <span>Qué puedes esperar</span>
+          <strong>{item.expect}</strong>
+        </div>
+      </li>
+    ))}
+  </ol>
+);
 
 export default ProcessSlider;

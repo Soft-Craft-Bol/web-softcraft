@@ -1,38 +1,50 @@
 import Link from 'next/link';
 import { HiArrowUpRight } from 'react-icons/hi2';
+import Folio from '../../components/Folio';
 import WorkSlider from '../../components/WorkSlider';
 
-const Work = () => {
-  return (
-    <div className="content-page work-page">
-      <section className="page-section page-intro-section" aria-labelledby="work-title">
-        <div className="site-container page-heading-split">
-          <h1 id="work-title" className="section-title">Piezas que muestran cómo pensamos el <span className="accent">producto.</span></h1>
-          <div>
-            <p className="lead">Una selección visual de demos y escenarios conceptuales. La idea es abrir la conversación, no inventar resultados.</p>
-            <Link href="/contact" className="text-link">Hablar de tu proyecto <HiArrowUpRight aria-hidden="true" /></Link>
-          </div>
-        </div>
-      </section>
+const Work = () => (
+  <div className="content-page" data-ink="yellow">
+    <Folio section="Proyectos" />
 
-      <section className="page-section page-section-tight work-section" aria-labelledby="work-slider-title">
-        <div className="site-container">
-          <div className="section-label-row">
-            <h2 id="work-slider-title">Demos seleccionadas</h2>
-            <span>piezas de muestra / sin cifras comerciales</span>
-          </div>
-          <WorkSlider />
+    <section className="page-intro" aria-labelledby="work-title">
+      <div className="site-container page-heading ink-plate">
+        <h1 id="work-title" className="page-title">
+          Proyectos que muestran cómo pensamos el producto.
+        </h1>
+        <div className="page-aside">
+          <p className="lead">
+            Cuatro trabajos con problemas distintos. En cada uno importa lo mismo: entender primero,
+            construir claro y dejar algo que se pueda mantener.
+          </p>
+          <Link href="/contact" className="text-link">
+            Hablar de tu proyecto <HiArrowUpRight aria-hidden="true" />
+          </Link>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="page-section work-cta-section">
-        <div className="site-container work-cta-inner">
-          <h2 className="section-title">Tu problema puede ser la próxima pieza.</h2>
-          <Link href="/contact" className="button-primary">Cuéntanos la idea <HiArrowUpRight aria-hidden="true" /></Link>
-        </div>
-      </section>
-    </div>
-  );
-};
+    <section className="panel work-panel" aria-labelledby="work-list-title">
+      <div className="site-container">
+        <header className="section-head">
+          <h2 id="work-list-title" className="section-title">
+            Proyectos
+          </h2>
+          <p className="section-meta">Cuatro piezas · cuatro contextos</p>
+        </header>
+        <WorkSlider />
+      </div>
+    </section>
+
+    <section className="panel cta-panel">
+      <div className="site-container cta-panel-inner">
+        <h2 className="section-title">Tu problema puede ser la próxima pieza.</h2>
+        <Link href="/contact" className="button-primary">
+          Cuéntanos la idea <HiArrowUpRight aria-hidden="true" />
+        </Link>
+      </div>
+    </section>
+  </div>
+);
 
 export default Work;

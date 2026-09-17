@@ -1,28 +1,17 @@
-import {
-  HiBars3,
-  HiChatBubbleBottomCenterText,
-  HiChatBubbleLeftRight,
-  HiEnvelope,
-  HiHome,
-  HiRectangleGroup,
-  HiSparkles,
-  HiUser,
-  HiViewColumns,
-  HiXMark,
-} from 'react-icons/hi2';
+import { HiBars3, HiXMark } from 'react-icons/hi2';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export const navData = [
-  { name: 'Inicio', path: '/', icon: HiHome },
-  { name: 'Servicios', path: '/services', icon: HiRectangleGroup },
-  { name: 'Proyectos', path: '/work', icon: HiViewColumns },
-  { name: 'Nosotros', path: '/about', icon: HiUser },
-  { name: 'Equipo', path: '/team', icon: HiSparkles },
-  { name: 'Proceso', path: '/process', icon: HiChatBubbleBottomCenterText },
-  { name: 'Testimonios', path: '/testimonials', icon: HiChatBubbleLeftRight },
-  { name: 'Contacto', path: '/contact', icon: HiEnvelope },
+  { name: 'Inicio', path: '/' },
+  { name: 'Servicios', path: '/services' },
+  { name: 'Proyectos', path: '/work' },
+  { name: 'Nosotros', path: '/about' },
+  { name: 'Equipo', path: '/team' },
+  { name: 'Proceso', path: '/process' },
+  { name: 'Testimonios', path: '/testimonials' },
+  { name: 'Contacto', path: '/contact' },
 ];
 
 const Nav = () => {
@@ -34,13 +23,15 @@ const Nav = () => {
   }, [router.pathname]);
 
   useEffect(() => {
+    if (!menuOpen) return undefined;
+
     const closeOnEscape = (event) => {
       if (event.key === 'Escape') setMenuOpen(false);
     };
 
     document.addEventListener('keydown', closeOnEscape);
     return () => document.removeEventListener('keydown', closeOnEscape);
-  }, []);
+  }, [menuOpen]);
 
   return (
     <div className="nav-wrap">
@@ -52,7 +43,7 @@ const Nav = () => {
         onClick={() => setMenuOpen((current) => !current)}
       >
         {menuOpen ? <HiXMark aria-hidden="true" /> : <HiBars3 aria-hidden="true" />}
-        <span>{menuOpen ? 'Cerrar' : 'Menú'}</span>
+        <span>{menuOpen ? 'Cerrar' : 'Índice'}</span>
       </button>
 
       <nav
@@ -61,7 +52,6 @@ const Nav = () => {
         aria-label="Navegación principal"
       >
         {navData.map((link) => {
-          const Icon = link.icon;
           const isActive = link.path === '/' ? router.pathname === '/' : router.pathname.startsWith(link.path);
 
           return (
@@ -72,7 +62,6 @@ const Nav = () => {
               aria-current={isActive ? 'page' : undefined}
               onClick={() => setMenuOpen(false)}
             >
-              <Icon aria-hidden="true" />
               <span>{link.name}</span>
             </Link>
           );

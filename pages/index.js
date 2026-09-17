@@ -1,105 +1,165 @@
 import Link from 'next/link';
-import { HiArrowDown, HiArrowUpRight, HiCheck, HiPlay } from 'react-icons/hi2';
-import ParticlesContainer from '../components/ParticlesContainer';
+import { HiArrowDown, HiArrowUpRight } from 'react-icons/hi2';
+import InkStrip from '../components/InkStrip';
+import RegisterMark from '../components/RegisterMark';
 
-const servicePreview = [
-  ['01', 'Software a medida', 'Cuando la herramienta genérica no entiende tu operación.'],
-  ['02', 'IA aplicada', 'Cuando hay tareas repetitivas y preguntas que merecen una mejor interfaz.'],
-  ['03', 'Acompañamiento', 'Cuando publicar es solo el comienzo de una solución útil.'],
+// Cómo llegan los proyectos: primero el problema, después la herramienta.
+const startingPoints = [
+  ['yellow', 'Una idea sin forma', 'El problema está claro, la solución todavía no.'],
+  ['coral', 'Un proceso manual', 'Demasiados pasos y poca visibilidad para decidir.'],
+  ['magenta', 'Una herramienta corta', 'El sistema que usas ya no alcanza tu operación.'],
 ];
 
-const processPreview = [
+const pillars = [
+  ['yellow', 'Software a medida', 'Cuando la herramienta genérica no entiende tu operación.'],
+  ['coral', 'IA aplicada', 'Cuando hay tareas repetitivas y decisiones que piden mejor información.'],
+  ['magenta', 'Acompañamiento', 'Cuando publicar es apenas el comienzo de algo útil.'],
+];
+
+const trail = [
   'Conversación inicial',
   'Análisis y asesoría',
   'Desarrollo revisable',
   'Soporte y mejora',
 ];
 
-const Home = () => {
-  return (
-    <div className="home-page">
-      <section className="home-hero" aria-labelledby="home-title">
-        <div className="home-hero-glow" aria-hidden="true" />
-        <div className="home-particle-field" aria-hidden="true">
-          <ParticlesContainer />
-        </div>
-        <div className="site-container hero-layout">
-          <div className="hero-copy">
-            <h1 id="home-title" className="display-title">
-              El software debe <span className="accent">entender</span> tu forma de trabajar.
-            </h1>
-            <p className="lead">
-              Convertimos ideas y problemas de operación en soluciones digitales a medida, con IA solo cuando realmente aporta valor.
-            </p>
-            <div className="hero-actions">
-              <Link href="/contact" className="button-primary">
-                Contáctanos <HiArrowUpRight aria-hidden="true" />
-              </Link>
-              <Link href="/work" className="button-secondary">
-                Ver proyectos <HiPlay aria-hidden="true" />
-              </Link>
-            </div>
-            <div className="hero-proof" aria-label="Cómo trabaja SoftCraft">
-              <span><HiCheck aria-hidden="true" /> A medida</span>
-              <span><HiCheck aria-hidden="true" /> Integral</span>
-              <span><HiCheck aria-hidden="true" /> Conversado</span>
-            </div>
-          </div>
+const tape = [
+  'Software a medida',
+  'Automatización',
+  'IA aplicada',
+  'Web y móvil',
+  'Infraestructura',
+  'Soporte continuo',
+];
 
-          <Link href="/about" className="hero-signature">
-            <span>Ideas propias.<br />Código a tu medida.</span>
-            <HiArrowUpRight aria-hidden="true" />
+const Home = () => (
+  <div className="home-page">
+    <section className="hero" aria-labelledby="home-title">
+      <div className="hero-ink-rail" aria-hidden="true">
+        <InkStrip variant="ink-strip--rail" />
+      </div>
+
+      <div className="site-container hero-grid">
+        <div className="hero-copy">
+          <h1 id="home-title" className="hero-title">
+            El software debe <em>entender</em> tu forma de trabajar.
+          </h1>
+          <p className="hero-lead">
+            Convertimos ideas y problemas de operación en soluciones digitales a medida, con IA solo
+            cuando realmente aporta valor.
+          </p>
+          <div className="hero-actions">
+            <Link href="/contact" className="button-primary">
+              Contáctanos <HiArrowUpRight aria-hidden="true" />
+            </Link>
+            <Link href="/work" className="button-quiet">
+              Ver proyectos <HiArrowUpRight aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+
+        <aside className="hero-plate">
+          <RegisterMark position="tl" />
+          <h2 className="hero-plate-title">Tres puntos de partida</h2>
+          <ul className="hero-plate-list">
+            {startingPoints.map(([swatch, title, description]) => (
+              <li key={title}>
+                <span className={`swatch swatch--${swatch}`} aria-hidden="true" />
+                <div>
+                  <strong>{title}</strong>
+                  <small>{description}</small>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <Link href="/services" className="text-link">
+            Ver las siete líneas <HiArrowUpRight aria-hidden="true" />
           </Link>
-        </div>
-        <Link href="#recorrido" className="home-scroll-cue" aria-label="Bajar al recorrido">
-          <span>ver el recorrido</span><HiArrowDown aria-hidden="true" />
-        </Link>
-      </section>
+        </aside>
+      </div>
 
-      <section id="recorrido" className="page-section home-signal-section">
-        <div className="site-container">
-          <div className="section-lead-row">
-            <h2 className="section-title">De la fricción a un sistema que <span className="accent">respira.</span></h2>
-            <p className="body-measure">No empezamos por la tecnología. Empezamos por la conversación que hace visible el problema y nos ayuda a construir una respuesta posible.</p>
-          </div>
-          <div className="signal-list" aria-label="Principios de trabajo">
-            {servicePreview.map(([number, title, description]) => (
-              <Link href="/services" key={number} className="signal-row">
+      <Link href="#recorrido" className="hero-cue">
+        <span>Empezar el recorrido</span>
+        <HiArrowDown aria-hidden="true" />
+      </Link>
+    </section>
+
+    <div className="ink-tape" aria-hidden="true">
+      <div className="ink-tape-track">
+        {[0, 1].map((pass) => (
+          <span className="ink-tape-pass" key={pass}>
+            {tape.map((word) => (
+              <b key={word}>
+                <i />
+                {word}
+              </b>
+            ))}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <section id="recorrido" className="panel signals-panel" aria-labelledby="signals-title">
+      <div className="site-container">
+        <header className="section-head">
+          <h2 id="signals-title" className="section-title">
+            De la fricción a un sistema que respira.
+          </h2>
+          <p className="section-note">
+            No empezamos por la tecnología. Empezamos por la conversación que hace visible el problema
+            y nos ayuda a construir una respuesta posible.
+          </p>
+        </header>
+
+        <ul className="signal-list">
+          {pillars.map(([swatch, title, description]) => (
+            <li key={title}>
+              <Link href="/services" className="signal">
+                <span className={`swatch swatch--${swatch}`} aria-hidden="true" />
                 <h3>{title}</h3>
                 <p>{description}</p>
                 <HiArrowUpRight className="signal-arrow" aria-hidden="true" />
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
 
-      <section className="page-section page-section-tight home-process-section">
-        <div className="site-container home-process-layout">
-          <div>
-            <h2 className="section-title">Una ruta visible para no perderse en el <span className="accent-hot">proyecto.</span></h2>
-            <p className="body-measure">Cada etapa deja algo que se puede mirar, conversar y ajustar. El objetivo es que la solución nunca se sienta como una caja negra.</p>
-            <Link href="/process" className="text-link">Conocer el proceso <HiArrowUpRight aria-hidden="true" /></Link>
-          </div>
-          <ol className="process-rail">
-            {processPreview.map((item, index) => (
-              <li key={item}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <strong>{item}</strong>
-              </li>
-            ))}
-          </ol>
+    <section className="panel trail-panel" aria-labelledby="trail-title">
+      <div className="site-container trail-grid">
+        <div className="trail-copy">
+          <h2 id="trail-title" className="section-title">
+            Una ruta visible para no perderse en el proyecto.
+          </h2>
+          <p className="body-measure">
+            Cada etapa deja algo que se puede mirar, conversar y ajustar. El objetivo es que la solución
+            nunca se sienta como una caja negra.
+          </p>
+          <Link href="/process" className="text-link">
+            Conocer el proceso <HiArrowUpRight aria-hidden="true" />
+          </Link>
         </div>
-      </section>
+        <ol className="railed">
+          {trail.map((item, index) => (
+            <li key={item}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <strong>{item}</strong>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
 
-      <section className="page-section home-contact-band">
-        <div className="site-container contact-band-inner">
-          <p>¿Tienes una idea, una herramienta que se quedó corta o un proceso que pide orden?</p>
-          <Link href="/contact" className="button-primary">Contáctanos <HiArrowUpRight aria-hidden="true" /></Link>
-        </div>
-      </section>
-    </div>
-  );
-};
+    <section className="cta-band">
+      <div className="site-container cta-band-inner">
+        <p>¿Tienes una idea, una herramienta que se quedó corta o un proceso que pide orden?</p>
+        <Link href="/contact" className="button-primary">
+          Contáctanos <HiArrowUpRight aria-hidden="true" />
+        </Link>
+      </div>
+    </section>
+  </div>
+);
 
 export default Home;

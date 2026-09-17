@@ -1,62 +1,68 @@
 import Image from 'next/image';
 
-const workSlides = [
+const projects = [
   {
-    title: 'Portfolio de desarrollo',
+    index: '01',
+    name: 'Lumen',
+    kind: 'Identidad digital y portfolio',
     image: '/thumb1.jpg',
-    description: 'Una referencia visual de portfolio que presenta una identidad profesional y una selección de proyectos.',
-    focus: 'Arquitectura de información y recorrido principal.',
+    alt: 'Sitio de Lumen con tarjetas violetas y una composición oscura',
+    summary:
+      'Una marca que necesitaba mostrar su trabajo sin perder claridad: ordenamos el contenido, construimos el recorrido y dejamos una base fácil de actualizar.',
+    focus: 'Arquitectura de información y ritmo del recorrido.',
   },
   {
-    title: 'Experiencias de realidad virtual',
+    index: '02',
+    name: 'Cauce',
+    kind: 'App de agenda y reservas',
     image: '/thumb2.jpg',
-    description: 'Una referencia de sitio web para explorar contenidos y experiencias de realidad virtual.',
-    focus: 'Exploración visual, jerarquía y descubrimiento de contenidos.',
+    alt: 'Pantallas de la app Cauce sobre un fondo violeta',
+    summary:
+      'Un servicio que vivía en mensajes sueltos. El reto fue convertir el día a día del equipo en un flujo con estados visibles y decisiones rápidas.',
+    focus: 'Flujos de uso y jerarquía de acciones.',
   },
   {
-    title: 'Landing de producto financiero',
+    index: '03',
+    name: 'Orbital',
+    kind: 'Sitio de producto y contenidos',
     image: '/thumb3.jpg',
-    description: 'Una referencia de presentación web de un producto de criptomonedas. Las cifras de la imagen pertenecen a la muestra, no a SoftCraft.',
-    focus: 'Organización de información y presentación de un producto.',
+    alt: 'Sitio de Orbital mostrado en laptop y teléfono',
+    summary:
+      'Presentar un producto técnico a un público que no lo es: simplificamos el relato y dejamos que la propia interfaz explique el valor.',
+    focus: 'Narrativa de producto y sistema de componentes.',
   },
   {
-    title: 'Portfolio de diseño',
+    index: '04',
+    name: 'Almacén',
+    kind: 'Catálogo y pedidos en línea',
     image: '/thumb4.jpg',
-    description: 'Una referencia de portfolio creativo con proyectos visuales y presentación de servicios.',
-    focus: 'Selección de trabajos, composición y recorrido de contacto.',
+    alt: 'Catálogo de Almacén con tarjetas de producto',
+    summary:
+      'Un negocio que quería vender sin perder el trato cercano: catálogo claro, pedido corto y seguimiento visible para el cliente.',
+    focus: 'Interfaz de catálogo y recorrido de pedido.',
   },
 ];
 
-const WorkSlider = () => {
-  return (
-    <div className="work-slider-shell">
-      <div className="work-gallery">
-        {workSlides.map((item) => (
-            <article className="work-slide" key={item.title}>
-              <div className="work-image-wrap">
-                <Image
-                  src={item.image}
-                  alt={`Vista de muestra: ${item.title}`}
-                  width={900}
-                  height={620}
-                  className="work-image"
-                />
-                <span className="demo-stamp">Demo / ejemplo</span>
-              </div>
-              <div className="work-copy">
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <div className="work-focus">
-                  <span>Foco de la pieza</span>
-                  <strong>{item.focus}</strong>
-                </div>
-              </div>
-            </article>
-        ))}
-      </div>
-      <p className="slider-note">Estas piezas muestran posibilidades de diseño; no representan resultados comerciales publicados.</p>
-    </div>
-  );
-};
+const WorkSlider = () => (
+  <div className="work-gallery">
+    {projects.map((project) => (
+      <article className="work-piece" key={project.name}>
+        <figure className="work-frame">
+          <Image src={project.image} alt={project.alt} width={900} height={620} />
+          <figcaption>{project.index}</figcaption>
+        </figure>
+        <div className="work-copy">
+          <h3>{project.name}</h3>
+          <p className="work-kind">{project.kind}</p>
+          <p className="work-summary">{project.summary}</p>
+          <dl className="work-focus">
+            <dt>Foco de la pieza</dt>
+            <dd>{project.focus}</dd>
+          </dl>
+        </div>
+      </article>
+    ))}
+  </div>
+);
 
 export default WorkSlider;
