@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { KeyboardEvent } from "react";
+import type { FocusEvent, KeyboardEvent, PointerEvent, WheelEvent } from "react";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi2";
 import { SERVICES } from "@/lib/site";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
@@ -73,6 +73,13 @@ export default function ServiceExplorer() {
   const currentRenderIndexRef = useRef(INITIAL_RENDER_INDEX);
   const isInitialisedRef = useRef(false);
   const scrollFrameRef = useRef<number | null>(null);
+  const pointerIdRef = useRef<number | null>(null);
+  const pointerStartXRef = useRef(0);
+  const pointerStartYRef = useRef(0);
+  const pointerMovedRef = useRef(false);
+  const wheelLockRef = useRef(false);
+  const wheelTimeoutRef = useRef<number | null>(null);
+  const isInteractingRef = useRef(false);
   const reducedMotion = usePrefersReducedMotion();
   const current = SERVICES[activeIndex];
 
@@ -120,6 +127,21 @@ export default function ServiceExplorer() {
     });
   }, []);
 
+  const moveBy = useCallback(
+    (amount: -1 | 1, focusSlide = false) => {
+      let targetRenderIndex = currentRenderIndexRef.current + amount;
+      let behavior: ScrollBehavior | undefined;
+
+      if (targetRenderIndex < 0 || targetRenderIndex >= serviceSlides.length) {
+        targetRenderIndex = MIDDLE_COPY * SERVICES.length + ((targetRenderIndex % SERVICES.length) + SERVICES.length) % SERVICES.length;
+        behavior = "auto";
+      }
+
+      scrollToRenderIndex(targetRenderIndex, behavior, focusSlide);
+    },
+    [scrollToRenderIndex],
+  );
+
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return undefined;
@@ -133,10 +155,20 @@ export default function ServiceExplorer() {
     return () => {
       window.cancelAnimationFrame(initialFrame);
       if (scrollFrameRef.current !== null) window.cancelAnimationFrame(scrollFrameRef.current);
+      if (wheelTimeoutRef.current !== null) window.clearTimeout(wheelTimeoutRef.current);
       scrollFrameRef.current = null;
+      wheelTimeoutRef.current = null;
       isInitialisedRef.current = false;
     };
   }, [handleTrackScroll, scrollToRenderIndex]);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      if (isInitialisedRef.current && !isInteractingRef.current && !document.hidden) moveBy(1);
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, [moveBy]);
 
   const scrollToService = (index: number, focusSlide = false) => {
     const logicalIndex = (index + SERVICES.length) % SERVICES.length;
@@ -149,16 +181,79 @@ export default function ServiceExplorer() {
     scrollToRenderIndex(nearestRenderIndex, undefined, focusSlide);
   };
 
-  const moveBy = (amount: -1 | 1, focusSlide = false) => {
-    let targetRenderIndex = currentRenderIndexRef.current + amount;
-    let behavior: ScrollBehavior | undefined;
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
 
-    if (targetRenderIndex < 0 || targetRenderIndex >= serviceSlides.length) {
-      targetRenderIndex = MIDDLE_COPY * SERVICES.length + ((targetRenderIndex % SERVICES.length) + SERVICES.length) % SERVICES.length;
-      behavior = "auto";
+    pointerIdRef.current = event.pointerId;
+    pointerStartXRef.current = event.clientX;
+    pointerStartYRef.current = event.clientY;
+    pointerMovedRef.current = false;
+    isInteractingRef.current = true;
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerId !== pointerIdRef.current) return;
+
+    const deltaX = event.clientX - pointerStartXRef.current;
+    const deltaY = event.clientY - pointerStartYRef.current;
+    if (!pointerMovedRef.current && Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 12) {
+      pointerIdRef.current = null;
+      isInteractingRef.current = false;
+      return;
     }
 
-    scrollToRenderIndex(targetRenderIndex, behavior, focusSlide);
+    if (Math.abs(deltaX) > 10) {
+      pointerMovedRef.current = true;
+      event.preventDefault();
+    }
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerId !== pointerIdRef.current) return;
+
+    const deltaX = event.clientX - pointerStartXRef.current;
+    const shouldMove = pointerMovedRef.current && Math.abs(deltaX) >= 36;
+    pointerIdRef.current = null;
+    pointerMovedRef.current = false;
+    isInteractingRef.current = false;
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+    if (shouldMove) moveBy(deltaX < 0 ? 1 : -1);
+  };
+
+  const handlePointerCancel = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerId !== pointerIdRef.current) return;
+
+    pointerIdRef.current = null;
+    pointerMovedRef.current = false;
+    isInteractingRef.current = false;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+  };
+
+  const handleWheel = (event: WheelEvent<HTMLDivElement>) => {
+    const horizontalDelta = Math.abs(event.deltaX) >= Math.abs(event.deltaY) ? event.deltaX : event.shiftKey ? event.deltaY : 0;
+    if (horizontalDelta === 0) return;
+
+    event.preventDefault();
+    if (wheelLockRef.current) return;
+
+    wheelLockRef.current = true;
+    isInteractingRef.current = true;
+    moveBy(horizontalDelta > 0 ? 1 : -1);
+    wheelTimeoutRef.current = window.setTimeout(() => {
+      wheelLockRef.current = false;
+      isInteractingRef.current = false;
+      wheelTimeoutRef.current = null;
+    }, 450);
+  };
+
+  const handleFocusCapture = () => {
+    isInteractingRef.current = true;
+  };
+
+  const handleBlurCapture = (event: FocusEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) isInteractingRef.current = false;
   };
 
   const handleTrackKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -178,7 +273,7 @@ export default function ServiceExplorer() {
   };
 
   return (
-    <div className="space-y-7">
+    <div className="space-y-7" onFocusCapture={handleFocusCapture} onBlurCapture={handleBlurCapture}>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <h2 className="max-w-[18ch] text-2xl font-semibold tracking-tight text-cream sm:text-3xl">
           Empieza por lo que más te quita tiempo.
@@ -195,8 +290,13 @@ export default function ServiceExplorer() {
         aria-roledescription="carrusel"
         tabIndex={0}
         onKeyDown={handleTrackKeyDown}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerCancel}
+        onWheel={handleWheel}
         onScroll={handleTrackScroll}
-        className="service-track isolate flex w-full min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-1 pb-3 pr-8 touch-pan-x lg:pr-1"
+        className="service-track isolate flex w-full min-w-0 snap-x snap-mandatory gap-4 overflow-x-hidden overscroll-x-contain px-1 pb-3 pr-8 select-none touch-pan-y lg:pr-1"
       >
         {serviceSlides.map(({ service, serviceIndex, renderIndex }) => {
           const Icon = service.icon;

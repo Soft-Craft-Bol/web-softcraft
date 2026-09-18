@@ -8,18 +8,26 @@ interface ParticleFieldProps {
 }
 
 interface Particle {
-  baseVx: number;
-  baseVy: number;
+  angle: number;
   color: string;
   radius: number;
+  speed: number;
   vx: number;
   vy: number;
+  wander: number;
+  wanderSpeed: number;
   x: number;
   y: number;
 }
 
 const COLORS = ["#ffd34b", "#ff8a5c", "#ff6f9d", "#b026ff", "#fff3ec"];
 const LINK_DISTANCE = 165;
+const POINTER_RADIUS = 210;
+
+function steerAngle(current: number, target: number, strength: number) {
+  const difference = Math.atan2(Math.sin(target - current), Math.cos(target - current));
+  return current + difference * strength;
+}
 
 /** Red de puntos ligera inspirada en la antigua configuración de tsParticles. */
 export default function ParticleField({ className = "" }: ParticleFieldProps) {
@@ -85,19 +93,25 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
       context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
 
       const amount = Math.min(92, Math.max(46, Math.round((width * height) / 14000)));
+      const margin = Math.min(72, Math.max(20, Math.min(width, height) * 0.14));
+      const spreadX = Math.max(1, width - margin * 2);
+      const spreadY = Math.max(1, height - margin * 2);
+
       particles = Array.from({ length: amount }, () => {
         const angle = Math.random() * Math.PI * 2;
         const speed = 0.1 + Math.random() * 0.28;
 
         return {
-          baseVx: Math.cos(angle) * speed,
-          baseVy: Math.sin(angle) * speed,
+          angle,
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
           radius: 1 + Math.random() * 2.2,
+          speed,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          x: Math.random() * width,
-          y: Math.random() * height,
+          wander: Math.random() * Math.PI * 2,
+          wanderSpeed: 0.004 + Math.random() * 0.008,
+          x: margin + Math.random() * spreadX,
+          y: margin + Math.random() * spreadY,
         };
       });
 
@@ -105,32 +119,87 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
     };
 
     const moveParticles = () => {
+      const edgeMargin = Math.min(72, Math.max(20, Math.min(width, height) * 0.14));
+
       for (const particle of particles) {
-        if (pointer.active) {
-          const distanceX = particle.x - pointer.x;
-          const distanceY = particle.y - pointer.y;
-          const distance = Math.hypot(distanceX, distanceY);
-
-          if (distance > 0 && distance < 170) {
-            const force = ((170 - distance) / 170) * 0.26;
-            particle.vx += (distanceX / distance) * force;
-            particle.vy += (distanceY / distance) * force;
-          }
-        }
-
         if (!reducedMotion) {
+          particle.wander += particle.wanderSpeed;
+          particle.angle += Math.sin(particle.wander) * 0.004;
+
+          const nearestEdge = Math.min(particle.x, width - particle.x, particle.y, height - particle.y);
+          const edgeSafety = Math.min(1, Math.max(0, nearestEdge / edgeMargin));
+
+          const leftProximity = Math.max(0, 1 - particle.x / edgeMargin);
+          const rightProximity = Math.max(0, 1 - (width - particle.x) / edgeMargin);
+          const topProximity = Math.max(0, 1 - particle.y / edgeMargin);
+          const bottomProximity = Math.max(0, 1 - (height - particle.y) / edgeMargin);
+
+          if (leftProximity > 0) particle.angle = steerAngle(particle.angle, 0, 0.04 + leftProximity * 0.22);
+          if (rightProximity > 0) particle.angle = steerAngle(particle.angle, Math.PI, 0.04 + rightProximity * 0.22);
+          if (topProximity > 0) particle.angle = steerAngle(particle.angle, Math.PI / 2, 0.04 + topProximity * 0.22);
+          if (bottomProximity > 0) particle.angle = steerAngle(particle.angle, -Math.PI / 2, 0.04 + bottomProximity * 0.22);
+
+          const targetVx = Math.cos(particle.angle) * particle.speed;
+          const targetVy = Math.sin(particle.angle) * particle.speed;
+          particle.vx += (targetVx - particle.vx) * 0.04;
+          particle.vy += (targetVy - particle.vy) * 0.04;
+
+          if (pointer.active) {
+            const distanceX = particle.x - pointer.x;
+            const distanceY = particle.y - pointer.y;
+            const distance = Math.hypot(distanceX, distanceY);
+
+            if (distance > 0 && distance < POINTER_RADIUS) {
+              const influence = 1 - distance / POINTER_RADIUS;
+              const awayX = distanceX / distance;
+              const awayY = distanceY / distance;
+              const outwardX = awayX < 0 && particle.x < edgeMargin
+                ? Math.min(1, particle.x / edgeMargin)
+                : awayX > 0 && width - particle.x < edgeMargin
+                  ? Math.min(1, (width - particle.x) / edgeMargin)
+                  : 1;
+              const outwardY = awayY < 0 && particle.y < edgeMargin
+                ? Math.min(1, particle.y / edgeMargin)
+                : awayY > 0 && height - particle.y < edgeMargin
+                  ? Math.min(1, (height - particle.y) / edgeMargin)
+                  : 1;
+              const impulse = influence * (0.1 + edgeSafety * 0.12);
+
+              particle.vx += awayX * impulse * outwardX;
+              particle.vy += awayY * impulse * outwardY;
+              particle.angle = steerAngle(particle.angle, Math.atan2(distanceY, distanceX), 0.12 + influence * 0.16);
+
+              const interactionSpeed = particle.speed + influence * 0.85;
+              const currentSpeed = Math.hypot(particle.vx, particle.vy);
+              if (currentSpeed > interactionSpeed) {
+                particle.vx = (particle.vx / currentSpeed) * interactionSpeed;
+                particle.vy = (particle.vy / currentSpeed) * interactionSpeed;
+              }
+            }
+          }
+
           particle.x += particle.vx;
           particle.y += particle.vy;
-          particle.vx = particle.vx * 0.985 + particle.baseVx * 0.015;
-          particle.vy = particle.vy * 0.985 + particle.baseVy * 0.015;
 
-          if (particle.x < 0 || particle.x > width) {
-            particle.vx *= -1;
-            particle.x = Math.max(0, Math.min(width, particle.x));
+          if (particle.x < particle.radius) {
+            particle.x = particle.radius;
+            particle.vx = Math.max(Math.abs(particle.vx), particle.speed * 0.25);
+            particle.angle = steerAngle(particle.angle, 0, 0.6);
           }
-          if (particle.y < 0 || particle.y > height) {
-            particle.vy *= -1;
-            particle.y = Math.max(0, Math.min(height, particle.y));
+          if (particle.x > width - particle.radius) {
+            particle.x = width - particle.radius;
+            particle.vx = -Math.max(Math.abs(particle.vx), particle.speed * 0.25);
+            particle.angle = steerAngle(particle.angle, Math.PI, 0.6);
+          }
+          if (particle.y < particle.radius) {
+            particle.y = particle.radius;
+            particle.vy = Math.max(Math.abs(particle.vy), particle.speed * 0.25);
+            particle.angle = steerAngle(particle.angle, Math.PI / 2, 0.6);
+          }
+          if (particle.y > height - particle.radius) {
+            particle.y = height - particle.radius;
+            particle.vy = -Math.max(Math.abs(particle.vy), particle.speed * 0.25);
+            particle.angle = steerAngle(particle.angle, -Math.PI / 2, 0.6);
           }
         }
       }

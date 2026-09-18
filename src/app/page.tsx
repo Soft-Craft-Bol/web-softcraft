@@ -6,6 +6,7 @@ import CtaBand from "@/components/CtaBand";
 import NeonBackdrop from "@/components/NeonBackdrop";
 import ParticleField from "@/components/ParticleField";
 import { PROJECTS, SERVICES } from "@/lib/site";
+import brandMark from "./image.png";
 
 export const metadata: Metadata = {
   title: "SoftCraft Bolivia | Software a medida e IA aplicada",
@@ -80,34 +81,16 @@ export default function Home() {
             </ul>
           </div>
 
-          {/* Panel bento: el recorrido, no un dashboard falso */}
-          <aside aria-label="Cómo trabajamos" className="rounded-2xl border border-white/12 bg-abyss/60 p-6 backdrop-blur-xl sm:p-7">
-            <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-dim">
-              De la idea al soporte
-            </p>
-            <ol className="mt-4 space-y-1">
-              {[
-                ["01", "Conversación", "Entendemos el problema real."],
-                ["02", "Plan claro", "Ordenamos el siguiente paso."],
-                ["03", "Avances revisables", "Ves cómo toma forma la solución."],
-                ["04", "Soporte", "Acompañamiento post-lanzamiento."],
-              ].map(([n, t, d]) => (
-                <li key={n} className="flex items-start gap-4 rounded-xl px-3 py-3 transition-colors hover:bg-white/5">
-                  <span className="font-mono text-sm font-bold text-magenta">{n}</span>
-                  <span>
-                    <span className="block text-sm font-bold text-cream">{t}</span>
-                    <span className="block text-[0.83rem] text-haze">{d}</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
-            <Link
-              href="/process"
-              className="mt-4 inline-flex min-h-[44px] items-center gap-2 text-sm font-bold text-gold transition-transform hover:translate-x-0.5"
-            >
-              Ver el proceso completo <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
-          </aside>
+          <div className="hidden items-center justify-center py-2 sm:py-6 lg:flex">
+            <Image
+              src={brandMark}
+              alt="SoftCraft Bolivia"
+              width={576}
+              height={576}
+              priority
+              className="w-[min(72vw,22rem)] object-contain"
+            />
+          </div>
         </div>
 
         <a

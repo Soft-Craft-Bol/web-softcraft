@@ -4,6 +4,7 @@ import { Sora } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import brandMark from "./image.png";
 import "./globals.css";
 
 const sora = Sora({
@@ -29,7 +30,11 @@ export const metadata: Metadata = {
     "Cochabamba",
   ],
   authors: [{ name: "SoftCraft Bolivia" }],
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: brandMark.src,
+    shortcut: brandMark.src,
+    apple: brandMark.src,
+  },
   openGraph: {
     title: "SoftCraft Bolivia | Software a medida e IA aplicada",
     description:

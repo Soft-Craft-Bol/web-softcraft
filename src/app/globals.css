@@ -165,6 +165,10 @@ a, button, input, select, textarea { font: inherit; }
   -webkit-overflow-scrolling: touch;
 }
 
+.service-track > [data-service-slide] {
+  scroll-snap-stop: always;
+}
+
 .service-track::-webkit-scrollbar {
   display: none;
 }
