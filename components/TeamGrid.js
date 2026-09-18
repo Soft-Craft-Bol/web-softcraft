@@ -59,6 +59,7 @@ const TeamGrid = () => {
         {teamMembers.map((member) => (
           <article
             key={member.id}
+            data-gsap-card
             className="group flex flex-col justify-between p-6 sm:p-7 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)] hover:border-[var(--sc-accent)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--sc-selection)] relative overflow-hidden"
           >
             {/* Acento decorativo sutil en hover */}

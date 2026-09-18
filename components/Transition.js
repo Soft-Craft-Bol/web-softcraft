@@ -1,47 +1,67 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import { useTransitionRouter } from './TransitionContext';
 import usePrefersReducedMotion from './usePrefersReducedMotion';
 
 const curtains = [
-  { id: 'curtain-purple', bg: '#9A0389', zIndex: 94, delay: 0 },
-  { id: 'curtain-coral', bg: '#FC354C', zIndex: 93, delay: 0.08 },
-  { id: 'curtain-orange', bg: '#FC6819', zIndex: 92, delay: 0.16 },
-  { id: 'curtain-gold', bg: '#FCBF02', zIndex: 91, delay: 0.24 },
+  { id: 'curtain-purple', bg: '#9A0389', zIndex: 94 },
+  { id: 'curtain-coral', bg: '#FC354C', zIndex: 93 },
+  { id: 'curtain-orange', bg: '#FC6819', zIndex: 92 },
+  { id: 'curtain-gold', bg: '#FCBF02', zIndex: 91 },
 ];
 
 const Transition = () => {
   const { isTransitioning, stage } = useTransitionRouter();
   const reducedMotion = usePrefersReducedMotion();
+  const rootRef = useRef(null);
+  const layerRefs = useRef([]);
 
-  if (reducedMotion || !isTransitioning) {
-    return null;
-  }
+  useEffect(() => {
+    if (reducedMotion || !isTransitioning) return undefined;
 
-  const isCovering = stage === 'covering';
+    const context = gsap.context(() => {
+      const layers = layerRefs.current.filter(Boolean);
+
+      if (stage === 'covering') {
+        gsap.fromTo(
+          layers,
+          { x: '100%' },
+          {
+            x: '0%',
+            duration: 0.42,
+            stagger: 0.07,
+            ease: 'power4.inOut',
+            overwrite: 'auto',
+          }
+        );
+      }
+
+      if (stage === 'uncovering') {
+        gsap.to([...layers].reverse(), {
+          x: '-100%',
+          duration: 0.42,
+          stagger: 0.07,
+          ease: 'power4.inOut',
+          overwrite: 'auto',
+        });
+      }
+    }, rootRef);
+
+    return () => context.revert();
+  }, [isTransitioning, reducedMotion, stage]);
+
+  if (reducedMotion || !isTransitioning) return null;
 
   return (
-    <div
-      aria-hidden="true"
-      className="fixed inset-0 pointer-events-none overflow-hidden"
-      style={{ zIndex: 9999 }}
-    >
-      {curtains.map((curtain) => (
-        <motion.div
+    <div ref={rootRef} aria-hidden="true" className="route-gsap-curtains">
+      {curtains.map((curtain, index) => (
+        <div
           key={curtain.id}
-          className="fixed inset-0 w-full h-full"
-          style={{
-            backgroundColor: curtain.bg,
-            zIndex: curtain.zIndex,
+          ref={(element) => {
+            layerRefs.current[index] = element;
           }}
-          initial={{ x: '100%' }}
-          animate={{
-            x: isCovering ? '0%' : '-100%',
-          }}
-          transition={{
-            duration: 0.38,
-            delay: isCovering ? curtain.delay : (0.24 - curtain.delay) * 0.6,
-            ease: [0.76, 0, 0.24, 1], // Cubic-bezier suave y contundente
-          }}
+          className="route-gsap-curtain"
+          style={{ backgroundColor: curtain.bg, zIndex: curtain.zIndex }}
         />
       ))}
     </div>

@@ -62,7 +62,8 @@ const WorkSlider = () => {
           return (
             <article
               key={project.id}
-              className="group relative flex flex-col rounded-2xl overflow-hidden border border-[var(--sc-line)] bg-[var(--sc-surface)] hover:border-[var(--sc-accent)] transition-all duration-300 hover:shadow-xl hover:shadow-[var(--sc-selection)]"
+              data-gsap-card
+              className="work-card group relative flex flex-col rounded-2xl overflow-hidden border border-[var(--sc-line)] bg-[var(--sc-surface)] hover:border-[var(--sc-accent)] transition-all duration-300 hover:shadow-xl hover:shadow-[var(--sc-selection)]"
             >
               {/* Imagen del proyecto */}
               <div className="relative w-full aspect-[16/10] overflow-hidden bg-[var(--sc-bg-soft)]">

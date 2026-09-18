@@ -42,7 +42,7 @@ const ProcessSlider = () => {
   return (
     <ol className="process-journey">
         {processData.map((item) => (
-          <li key={item.number}>
+          <li key={item.number} data-gsap-card>
             <article className="process-slide" aria-label={`${item.number}. ${item.title}`}>
               <div className="process-slide-number">{item.number}</div>
               <h3>{item.title}</h3>

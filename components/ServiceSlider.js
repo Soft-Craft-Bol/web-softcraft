@@ -5,6 +5,14 @@ import {
   RxReader,
   RxRocket,
 } from 'react-icons/rx';
+import { useEffect, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { A11y, Autoplay, Keyboard, Navigation, Pagination } from 'swiper';
+import usePrefersReducedMotion from './usePrefersReducedMotion';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const serviceData = [
   {
@@ -59,18 +67,63 @@ const serviceData = [
 ];
 
 const ServiceSlider = () => {
+  const reducedMotion = usePrefersReducedMotion();
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper?.autoplay) return;
+
+    if (reducedMotion) {
+      swiper.autoplay.stop();
+    } else {
+      swiper.autoplay.start();
+    }
+  }, [reducedMotion]);
+
   return (
-    <div className="service-catalog">
-        {serviceData.map((item, index) => {
+    <div className="service-slider-shell" data-gsap-reveal>
+      <Swiper
+        modules={[Autoplay, Navigation, Pagination, Keyboard, A11y]}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+        slidesPerView={1}
+        spaceBetween={18}
+        breakpoints={{
+          640: { slidesPerView: 1.35, spaceBetween: 20 },
+          768: { slidesPerView: 2, spaceBetween: 24 },
+          1100: { slidesPerView: 3, spaceBetween: 28 },
+        }}
+        autoplay={reducedMotion ? false : {
+          delay: 5000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        navigation
+        pagination={{ clickable: true }}
+        keyboard={{ enabled: true, onlyInViewport: true }}
+        a11y={{
+          containerMessage: 'Carrusel de servicios de SoftCraft',
+          itemRoleDescriptionMessage: 'servicio',
+          slideLabelMessage: 'Servicio {{index}} de {{slidesLength}}',
+          prevSlideMessage: 'Servicio anterior',
+          nextSlideMessage: 'Siguiente servicio',
+          paginationBulletMessage: 'Ir al servicio {{index}}',
+        }}
+        loop
+        className="sc-swiper service-swiper !pb-14"
+      >
+        {serviceData.map((item) => {
           const Icon = item.icon;
 
           return (
-              <details className="service-entry" key={item.title} open={index === 0}>
-                <summary className="service-slide-head">
+            <SwiperSlide key={item.title} className="h-auto">
+              <article className="service-card">
+                <div className="service-slide-head">
                   <span className="service-icon" aria-hidden="true"><Icon /></span>
                   <h3>{item.title}</h3>
-                  <span className="service-expand" aria-hidden="true">+</span>
-                </summary>
+                </div>
                 <div className="service-facts">
                   <div className="service-fact">
                     <span>Resuelve</span>
@@ -85,9 +138,11 @@ const ServiceSlider = () => {
                     <p>{item.benefit}</p>
                   </div>
                 </div>
-              </details>
+              </article>
+            </SwiperSlide>
           );
         })}
+      </Swiper>
     </div>
   );
 };

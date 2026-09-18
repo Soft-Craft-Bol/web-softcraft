@@ -62,7 +62,7 @@ const About = () => {
       {/* Declaración y Capacidades */}
       <section className="page-section about-statement-section py-12 lg:py-16">
         <div className="site-container about-layout grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div className="about-statement lg:col-span-5 p-8 sm:p-10 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)] space-y-4">
+          <div data-gsap-reveal className="about-statement lg:col-span-5 p-8 sm:p-10 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)] space-y-4">
             <span className="text-xs font-bold text-[var(--sc-accent)] tracking-widest uppercase">
               Filosofía SoftCraft
             </span>
@@ -84,6 +84,7 @@ const About = () => {
               {capabilities.map((item) => (
                 <div
                   key={item.title}
+                  data-gsap-card
                   className="p-5 rounded-xl border border-[var(--sc-line)] bg-[var(--sc-surface)] hover:border-[var(--sc-accent)] transition-colors space-y-2"
                 >
                   <div className="flex items-center gap-2 text-[var(--sc-accent)]">
@@ -112,6 +113,7 @@ const About = () => {
             {coreValues.map((val) => (
               <div
                 key={val.index}
+                data-gsap-card
                 className="p-8 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)] hover:border-[var(--sc-accent)] transition-all space-y-4"
               >
                 <span className="inline-block px-3 py-1 text-xs font-mono font-bold rounded bg-[var(--sc-surface-strong)] text-[var(--sc-accent)] border border-[var(--sc-line)]">

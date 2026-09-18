@@ -1,9 +1,12 @@
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { A11y, Keyboard, Pagination } from 'swiper';
+import { A11y, Autoplay, Keyboard, Navigation, Pagination } from 'swiper';
 import { HiStar } from 'react-icons/hi2';
+import { useEffect, useRef } from 'react';
+import usePrefersReducedMotion from './usePrefersReducedMotion';
 
 import 'swiper/css';
+import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const testimonials = [
@@ -46,10 +49,27 @@ const testimonials = [
 ];
 
 const TestimonialSlider = () => {
+  const reducedMotion = usePrefersReducedMotion();
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper?.autoplay) return;
+
+    if (reducedMotion) {
+      swiper.autoplay.stop();
+    } else {
+      swiper.autoplay.start();
+    }
+  }, [reducedMotion]);
+
   return (
-    <div className="testimonial-slider-shell">
+    <div className="testimonial-slider-shell" data-gsap-reveal>
       <Swiper
-        modules={[Pagination, Keyboard, A11y]}
+        modules={[Pagination, Navigation, Keyboard, A11y, Autoplay]}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
         spaceBetween={32}
         slidesPerView={1}
         breakpoints={{
@@ -61,8 +81,21 @@ const TestimonialSlider = () => {
         pagination={{
           clickable: true,
         }}
+        navigation
+        autoplay={reducedMotion ? false : {
+          delay: 6200,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
         keyboard={{ enabled: true }}
-        a11y={{ paginationBulletMessage: 'Ir al testimonio {{index}}' }}
+        a11y={{
+          containerMessage: 'Carrusel de testimonios de SoftCraft',
+          itemRoleDescriptionMessage: 'testimonio',
+          slideLabelMessage: 'Testimonio {{index}} de {{slidesLength}}',
+          prevSlideMessage: 'Testimonio anterior',
+          nextSlideMessage: 'Siguiente testimonio',
+          paginationBulletMessage: 'Ir al testimonio {{index}}',
+        }}
         loop
         className="sc-swiper testimonial-swiper !pb-14"
       >

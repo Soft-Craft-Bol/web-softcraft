@@ -93,6 +93,7 @@ const Home = () => {
               <Link
                 href="/services"
                 key={service.number}
+                data-gsap-card
                 className="signal-row group flex flex-col justify-between p-8 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)] hover:border-[var(--sc-accent)] transition-all duration-300"
               >
                 <div className="space-y-3">
@@ -136,6 +137,7 @@ const Home = () => {
               {processPreview.map((item, index) => (
                 <li
                   key={item}
+                  data-gsap-card
                   className="flex items-center gap-5 p-5 rounded-xl border border-[var(--sc-line)] bg-[var(--sc-surface)] hover:border-[var(--sc-accent)] transition-colors"
                 >
                   <span className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center font-mono text-sm font-bold bg-[var(--sc-surface-strong)] text-[var(--sc-accent)] border border-[var(--sc-line)]">

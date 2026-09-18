@@ -6,6 +6,7 @@ import Nav from './Nav';
 import { ThemeContext } from './ThemeContext';
 import { TransitionProvider } from './TransitionContext';
 import Transition from './Transition';
+import GsapEffects from './GsapEffects';
 
 const sora = Sora({
   subsets: ['latin'],
@@ -36,7 +37,10 @@ const Layout = ({ children }) => {
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <TransitionProvider>
         <div className={`site-shell ${sora.variable} font-sora`} data-theme={theme}>
+          <div className="site-ambient-orb" aria-hidden="true" />
+          <div className="scroll-progress" aria-hidden="true" />
           <Transition />
+          <GsapEffects />
           <Header>
             <Nav />
           </Header>
