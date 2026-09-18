@@ -3,7 +3,8 @@ import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.
 
 const TRANSITION_ELEMENT_ID = "transition-element";
 const ANIMATION_DURATION = 0.72;
-const TRAILING_RADIUS_DURATION = 0.5;
+const TRAILING_RADIUS_START = 0.34;
+const TRAILING_RADIUS_DURATION = ANIMATION_DURATION - TRAILING_RADIUS_START;
 const LEADING_RADIUS_DURATION = 0.26;
 
 let activeExitTimeline: gsap.core.Timeline | null = null;
@@ -14,6 +15,11 @@ function getTransitionElement(): HTMLElement | null {
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function navigateTo(href: string, router: AppRouterInstance): void {
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  router.push(href, { scroll: true });
 }
 
 export function animatePageIn(): gsap.core.Timeline | null {
@@ -51,7 +57,7 @@ export function animatePageIn(): gsap.core.Timeline | null {
         duration: TRAILING_RADIUS_DURATION,
         ease: "power2.out",
       },
-      "<0.12",
+      TRAILING_RADIUS_START,
     )
     .set(element, { autoAlpha: 0 });
 
@@ -63,7 +69,7 @@ export function animatePageOut(href: string, router: AppRouterInstance): void {
 
   const element = getTransitionElement();
   if (!element || prefersReducedMotion()) {
-    router.push(href);
+    navigateTo(href, router);
     return;
   }
 
@@ -71,7 +77,7 @@ export function animatePageOut(href: string, router: AppRouterInstance): void {
   activeExitTimeline = gsap.timeline({
     onComplete: () => {
       activeExitTimeline = null;
-      router.push(href);
+      navigateTo(href, router);
     },
   });
 
