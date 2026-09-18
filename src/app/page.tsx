@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { HiArrowDown, HiArrowUpRight, HiCheck, HiPlay } from "react-icons/hi2";
 import CtaBand from "@/components/CtaBand";
 import NeonBackdrop from "@/components/NeonBackdrop";
 import ParticleField from "@/components/ParticleField";
 import { PROJECTS, SERVICES } from "@/lib/site";
+import TransitionLink from "@/components/TransitionLink";
 import brandMark from "./image.png";
 
 export const metadata: Metadata = {
@@ -59,26 +59,19 @@ export default function Home() {
               Convertimos procesos enredados, tareas repetitivas e ideas pendientes en herramientas que encajan con tu forma de trabajar.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-1">
-              <Link
+              <TransitionLink
                 href="/contact"
                 className="btn-shine inline-flex min-h-[52px] items-center gap-2 rounded-lg bg-gradient-to-r from-magenta to-viol px-6 text-sm font-bold text-white shadow-[0_0_26px_rgba(255,46,136,0.4)] transition-transform hover:-translate-y-0.5"
               >
                 Cuéntanos qué te está frenando <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />
-              </Link>
-              <Link
+              </TransitionLink>
+              <TransitionLink
                 href="/work"
                 className="inline-flex min-h-[52px] items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-6 text-sm font-bold text-cream backdrop-blur transition-colors hover:border-gold/60 hover:text-gold"
               >
                 <HiPlay aria-hidden="true" className="h-4 w-4" /> Ver proyectos
-              </Link>
+              </TransitionLink>
             </div>
-            <ul aria-label="Cómo trabaja SoftCraft" className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-sm text-haze">
-              {["A tu medida", "Avances visibles", "Acompañamiento después"].map((item) => (
-                <li key={item} className="inline-flex items-center gap-1.5">
-                  <HiCheck aria-hidden="true" className="h-4 w-4 text-gold" /> {item}
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div className="hidden items-center justify-center py-2 sm:py-6 lg:flex">
@@ -117,7 +110,7 @@ export default function Home() {
           {SERVICES.slice(2, 5).map((service, index) => {
             const Icon = service.icon;
             return (
-              <Link
+              <TransitionLink
                 key={service.title}
                 href="/services"
                 className={`group flex min-h-[240px] flex-col justify-between rounded-2xl border p-7 transition-all duration-200 hover:-translate-y-1 ${homeCardStyles[index]} ${accentBorder[service.accent]} hover:shadow-[0_18px_50px_rgba(255,46,136,0.16)]`}
@@ -136,7 +129,7 @@ export default function Home() {
                   Explorar solución
                   <HiArrowUpRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
-              </Link>
+              </TransitionLink>
             );
           })}
         </div>
@@ -149,9 +142,9 @@ export default function Home() {
             <h2 id="destacados-title" className="max-w-[16ch] text-3xl font-semibold tracking-tight text-cream sm:text-5xl">
               Proyectos que se pueden <span className="text-gold">explorar.</span>
             </h2>
-            <Link href="/work" className="inline-flex min-h-[44px] items-center gap-2 text-sm font-bold text-gold hover:translate-x-0.5 transition-transform">
+            <TransitionLink href="/work" className="inline-flex min-h-[44px] items-center gap-2 text-sm font-bold text-gold hover:translate-x-0.5 transition-transform">
               Todos los proyectos <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
+            </TransitionLink>
           </div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {PROJECTS.slice(0, 2).map((project) => (

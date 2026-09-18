@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { HiArrowUpRight } from "react-icons/hi2";
+import TransitionLink from "@/components/TransitionLink";
 
 export type PageIntroVariant = "services" | "projects" | "testimonials" | "standard";
 
@@ -123,12 +123,12 @@ export default function PageIntro({
         <div className={`space-y-4 ${centered ? "mx-auto mt-6 max-w-2xl" : ""}`}>
           <p className={`max-w-[52ch] text-base leading-relaxed ${styles.lead} ${centered ? "mx-auto" : ""}`}>{lead}</p>
           {linkHref && linkLabel && (
-            <Link
+            <TransitionLink
               href={linkHref}
               className={`inline-flex min-h-[44px] items-center gap-2 border-b pb-1 text-sm font-bold transition-colors ${styles.link}`}
             >
               {linkLabel} <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
+            </TransitionLink>
           )}
         </div>
       </div>

@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { HiArrowUpRight } from "react-icons/hi2";
 import { CONTACT } from "@/lib/site";
 
 export default function Footer() {

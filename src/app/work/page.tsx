@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { HiArrowUpRight } from "react-icons/hi2";
 import CtaBand from "@/components/CtaBand";
 import PageIntro from "@/components/PageIntro";
+import TransitionLink from "@/components/TransitionLink";
 import { PROJECTS } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -68,12 +68,12 @@ export default function WorkPage() {
                     </li>
                   ))}
                 </ul>
-                <Link
+                <TransitionLink
                   href="/contact"
                   className="mt-5 inline-flex min-h-[44px] items-center gap-2 text-sm font-bold text-gold transition-transform hover:translate-x-0.5"
                 >
                   Conversar solución <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />
-                </Link>
+                </TransitionLink>
               </div>
             </article>
           );

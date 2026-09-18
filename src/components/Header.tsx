@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { HiBars3, HiXMark } from "react-icons/hi2";
+import TransitionLink from "@/components/TransitionLink";
 import { NAV } from "@/lib/site";
 
 export default function Header() {
@@ -29,15 +29,15 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-abyss/85 backdrop-blur-xl">
       <div className="mx-auto flex min-h-[72px] w-[min(100%-2rem,72rem)] items-center justify-between gap-4">
-        <Link href="/" aria-label="SoftCraft Bolivia, ir al inicio" className="flex min-h-[52px] items-center">
+        <TransitionLink href="/" aria-label="SoftCraft Bolivia, ir al inicio" className="flex min-h-[52px] items-center">
           <Image src="/logo.svg" width={150} height={44} alt="SoftCraft Bolivia" priority className="h-auto w-[150px]" />
-        </Link>
+        </TransitionLink>
 
         <nav aria-label="Navegación principal" className="hidden items-center gap-1 lg:flex">
           {NAV.map((item) => {
             const active = item.path === "/" ? pathname === "/" : pathname.startsWith(item.path);
             return (
-              <Link
+              <TransitionLink
                 key={item.path}
                 href={item.path}
                 aria-current={active ? "page" : undefined}
@@ -52,18 +52,18 @@ export default function Header() {
                     active ? "opacity-100" : "opacity-0"
                   }`}
                 />
-              </Link>
+              </TransitionLink>
             );
           })}
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
+          <TransitionLink
             href="/contact"
             className="btn-shine hidden min-h-[44px] items-center rounded-lg bg-gradient-to-r from-magenta to-viol px-4 text-[0.75rem] font-bold text-white shadow-[0_0_20px_rgba(255,46,136,0.35)] transition-transform hover:-translate-y-0.5 sm:inline-flex"
           >
             Contáctanos
-          </Link>
+          </TransitionLink>
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
@@ -88,7 +88,7 @@ export default function Header() {
               const active = item.path === "/" ? pathname === "/" : pathname.startsWith(item.path);
               return (
                 <li key={item.path}>
-                  <Link
+                  <TransitionLink
                     href={item.path}
                     aria-current={active ? "page" : undefined}
                     onClick={() => setOpen(false)}
@@ -97,7 +97,7 @@ export default function Header() {
                     }`}
                   >
                     {item.name}
-                  </Link>
+                  </TransitionLink>
                 </li>
               );
             })}
