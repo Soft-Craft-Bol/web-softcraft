@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { HiStar } from "react-icons/hi2";
 import CtaBand from "@/components/CtaBand";
 import PageIntro from "@/components/PageIntro";
 import { TESTIMONIALS } from "@/lib/site";
@@ -14,23 +13,21 @@ export default function TestimonialsPage() {
   return (
     <>
       <PageIntro
-        title={<>Lo que dicen <span className="text-gold">nuestros clientes.</span></>}
-        lead="Relaciones de trabajo que hablan por sí solas. Cada proyecto deja una historia."
+        eyebrow="Experiencias de trabajo"
+        variant="testimonials"
+        title={<>Lo que dicen quienes ya <span className="text-gold">trabajaron con nosotros.</span></>}
+        lead="Cada historia empieza con una forma particular de trabajar y termina con más claridad para avanzar."
         linkHref="/contact"
-        linkLabel="Ser el próximo caso"
+        linkLabel="Cuéntanos tu caso"
       />
       <div className="mx-auto w-[min(100%-2rem,72rem)] py-14 sm:py-20">
 
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {TESTIMONIALS.map((item) => (
-            <figure key={item.name} className="flex flex-col justify-between gap-5 rounded-2xl border border-white/12 bg-panel p-7 transition-colors hover:border-rose/50">
+            <figure key={item.name} className="flex flex-col justify-between gap-5 rounded-2xl border border-white/12 bg-gradient-to-br from-panel2 via-panel to-plum p-7 transition-transform hover:-translate-y-1">
               <div>
-                <div aria-label="Calificación de 5 estrellas" className="flex gap-1 text-gold">
-                  {Array.from({ length: 5 }).map((_, star) => (
-                    <HiStar key={star} aria-hidden="true" className="h-4 w-4" />
-                  ))}
-                </div>
-                <blockquote className="mt-4 text-[0.95rem] leading-relaxed text-cream">
+                <span aria-hidden="true" className="font-serif text-7xl leading-none text-coral/75">“</span>
+                <blockquote className="-mt-3 text-[0.95rem] leading-relaxed text-cream">
                   “{item.quote}”
                 </blockquote>
               </div>

@@ -5,7 +5,7 @@ import { HiArrowDown, HiArrowUpRight, HiCheck, HiPlay } from "react-icons/hi2";
 import CtaBand from "@/components/CtaBand";
 import NeonBackdrop from "@/components/NeonBackdrop";
 import ParticleField from "@/components/ParticleField";
-import { PROJECTS, SERVICES, TECH_MARQUEE } from "@/lib/site";
+import { PROJECTS, SERVICES } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "SoftCraft Bolivia | Software a medida e IA aplicada",
@@ -25,43 +25,44 @@ const accentBorder: Record<string, string> = {
   coral: "hover:border-coral/60",
 };
 
+const homeCardStyles = [
+  "border-magenta/35 bg-gradient-to-br from-magenta/25 via-panel to-panel md:translate-y-3",
+  "border-gold/35 bg-gradient-to-br from-gold/20 via-panel to-panel md:-translate-y-2",
+  "border-coral/35 bg-gradient-to-br from-coral/25 via-panel to-panel md:translate-y-7",
+];
+
 export default function Home() {
   return (
     <>
       {/* HERO: aura + red interactiva inspirada en la antigua portada */}
       <section aria-labelledby="home-title" className="relative overflow-hidden border-b border-white/10">
-        <NeonBackdrop kind="aurora" />
-        <div className="pointer-events-none absolute inset-0 z-[1] opacity-90">
+        <NeonBackdrop kind="aurora" className="z-0" />
+        <div className="pointer-events-none absolute inset-0 z-[2] opacity-100">
           <ParticleField />
         </div>
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0"
+          className="pointer-events-none absolute inset-0 z-[1]"
           style={{
             background:
-              "linear-gradient(90deg, rgba(18,6,15,0.9) 0%, rgba(18,6,15,0.55) 55%, rgba(18,6,15,0.25) 100%), linear-gradient(0deg, rgba(18,6,15,0.5) 0%, transparent 40%)",
+              "linear-gradient(90deg, rgba(18,6,15,0.72) 0%, rgba(18,6,15,0.35) 55%, rgba(18,6,15,0.12) 100%), linear-gradient(0deg, rgba(18,6,15,0.35) 0%, transparent 44%)",
           }}
         />
 
-        <div className="relative z-[2] mx-auto grid w-[min(100%-2rem,72rem)] gap-10 py-16 sm:py-24 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-14">
+        <div className="relative z-[3] mx-auto grid w-[min(100%-2rem,72rem)] gap-10 py-16 sm:py-24 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-14">
           <div className="max-w-2xl space-y-6">
-            <p className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs text-haze backdrop-blur">
-              <span aria-hidden="true" className="h-2 w-2 animate-pulse-dot rounded-full bg-magenta" />
-              SoftCraft Bolivia · Software a medida e IA aplicada
-            </p>
             <h1 id="home-title" className="text-[clamp(2.7rem,7vw,5.2rem)] font-bold leading-[1.02] tracking-tight text-cream">
               El software debe <span className="text-gold">entender</span> tu forma de trabajar.
             </h1>
             <p className="max-w-[52ch] text-base leading-relaxed text-haze sm:text-lg">
-              Transformamos desafíos operativos e ideas estratégicas en soluciones digitales de alto
-              rendimiento, integrando inteligencia artificial solo donde genera valor tangible.
+              Convertimos procesos enredados, tareas repetitivas e ideas pendientes en herramientas que encajan con tu forma de trabajar.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <Link
                 href="/contact"
                 className="btn-shine inline-flex min-h-[52px] items-center gap-2 rounded-lg bg-gradient-to-r from-magenta to-viol px-6 text-sm font-bold text-white shadow-[0_0_26px_rgba(255,46,136,0.4)] transition-transform hover:-translate-y-0.5"
               >
-                Contáctanos <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />
+                Cuéntanos qué te está frenando <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />
               </Link>
               <Link
                 href="/work"
@@ -71,7 +72,7 @@ export default function Home() {
               </Link>
             </div>
             <ul aria-label="Cómo trabaja SoftCraft" className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-sm text-haze">
-              {["A medida", "Rigor técnico", "Soporte continuo"].map((item) => (
+              {["A tu medida", "Avances visibles", "Acompañamiento después"].map((item) => (
                 <li key={item} className="inline-flex items-center gap-1.5">
                   <HiCheck aria-hidden="true" className="h-4 w-4 text-gold" /> {item}
                 </li>
@@ -87,8 +88,8 @@ export default function Home() {
             <ol className="mt-4 space-y-1">
               {[
                 ["01", "Conversación", "Entendemos el problema real."],
-                ["02", "Arquitectura", "Diseño técnico a tu escala."],
-                ["03", "Construcción", "Entregas revisables, sin caja negra."],
+                ["02", "Plan claro", "Ordenamos el siguiente paso."],
+                ["03", "Avances revisables", "Ves cómo toma forma la solución."],
                 ["04", "Soporte", "Acompañamiento post-lanzamiento."],
               ].map(([n, t, d]) => (
                 <li key={n} className="flex items-start gap-4 rounded-xl px-3 py-3 transition-colors hover:bg-white/5">
@@ -118,51 +119,38 @@ export default function Home() {
         </a>
       </section>
 
-      {/* MARQUEE de capacidades */}
-      <div className="overflow-hidden border-b border-white/10 bg-plum py-3" aria-label="Tecnologías con las que trabajamos">
-        <div className="flex w-max animate-marquee gap-10 whitespace-nowrap">
-          {[0, 1].map((copy) => (
-            <div key={copy} aria-hidden={copy === 1} className="flex gap-10">
-              {TECH_MARQUEE.map((tech) => (
-                <span key={`${copy}-${tech}`} className="font-mono text-xs uppercase tracking-[0.18em] text-dim">
-                  {tech} <span className="ml-8 text-magenta">✦</span>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* RECORRIDO / SERVICIOS */}
       <section id="recorrido" aria-labelledby="recorrido-title" className="mx-auto w-[min(100%-2rem,72rem)] scroll-mt-24 py-16 sm:py-24">
         <div className="grid gap-6 lg:grid-cols-[1fr_0.7fr] lg:items-end">
           <h2 id="recorrido-title" className="max-w-[16ch] text-3xl font-semibold tracking-tight text-cream sm:text-5xl">
-            De la fricción operativa a un sistema que <span className="text-coral">respira.</span>
+            Menos vueltas para <span className="text-coral">trabajar mejor.</span>
           </h2>
           <p className="max-w-[52ch] leading-relaxed text-haze">
-            Iniciamos por la conversación analítica que hace visible el problema real y diseña la
-            solución más eficiente para tu equipo.
+            Empezamos por entender qué te quita tiempo y ordenamos una solución que puedas usar, revisar y hacer crecer.
           </p>
         </div>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {SERVICES.slice(2, 5).map((service) => {
+          {SERVICES.slice(2, 5).map((service, index) => {
             const Icon = service.icon;
             return (
               <Link
                 key={service.title}
                 href="/services"
-                className={`group flex min-h-[240px] flex-col justify-between rounded-2xl border border-white/12 bg-panel p-7 transition-all duration-200 hover:-translate-y-1 ${accentBorder[service.accent]} hover:shadow-[0_18px_50px_rgba(255,46,136,0.16)]`}
+                className={`group flex min-h-[240px] flex-col justify-between rounded-2xl border p-7 transition-all duration-200 hover:-translate-y-1 ${homeCardStyles[index]} ${accentBorder[service.accent]} hover:shadow-[0_18px_50px_rgba(255,46,136,0.16)]`}
               >
-                <div className="space-y-3">
-                  <span className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 ${accentText[service.accent]}`}>
-                    <Icon aria-hidden="true" className="h-5 w-5" />
-                  </span>
+                <div className="space-y-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <span className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-white/5 ${accentText[service.accent]}`}>
+                      <Icon aria-hidden="true" className="h-5 w-5" />
+                    </span>
+                    <span className="font-mono text-xs font-bold text-cream/45">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
                   <h3 className="text-xl font-bold text-cream">{service.title}</h3>
                   <p className="text-sm leading-relaxed text-haze">{service.problem}</p>
                 </div>
                 <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-gold">
-                  Ver en servicios
+                  Explorar solución
                   <HiArrowUpRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
               </Link>

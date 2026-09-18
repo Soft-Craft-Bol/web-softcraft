@@ -18,8 +18,8 @@ interface Particle {
   y: number;
 }
 
-const COLORS = ["#ffd34b", "#ff8a5c", "#ff6f9d", "#fff3ec"];
-const LINK_DISTANCE = 150;
+const COLORS = ["#ffd34b", "#ff8a5c", "#ff6f9d", "#b026ff", "#fff3ec"];
+const LINK_DISTANCE = 165;
 
 /** Red de puntos ligera inspirada en la antigua configuración de tsParticles. */
 export default function ParticleField({ className = "" }: ParticleFieldProps) {
@@ -55,7 +55,7 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
 
           if (distance > LINK_DISTANCE) continue;
 
-          const opacity = (1 - distance / LINK_DISTANCE) * 0.32;
+          const opacity = (1 - distance / LINK_DISTANCE) * 0.38;
           context.beginPath();
           context.moveTo(first.x, first.y);
           context.lineTo(second.x, second.y);
@@ -69,7 +69,7 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
         context.beginPath();
         context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         context.fillStyle = particle.color;
-        context.globalAlpha = 0.7;
+        context.globalAlpha = 0.84;
         context.fill();
       }
 
@@ -84,10 +84,10 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
       canvas.height = Math.floor(height * deviceScale);
       context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
 
-      const amount = Math.min(86, Math.max(42, Math.round((width * height) / 15000)));
+      const amount = Math.min(92, Math.max(46, Math.round((width * height) / 14000)));
       particles = Array.from({ length: amount }, () => {
         const angle = Math.random() * Math.PI * 2;
-        const speed = 0.08 + Math.random() * 0.22;
+        const speed = 0.1 + Math.random() * 0.28;
 
         return {
           baseVx: Math.cos(angle) * speed,

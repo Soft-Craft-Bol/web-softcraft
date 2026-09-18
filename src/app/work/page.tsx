@@ -16,10 +16,12 @@ export default function WorkPage() {
   return (
     <>
       <PageIntro
-        title={<>Proyectos que muestran cómo <span className="text-gold">pensamos.</span></>}
-        lead="Cuatro piezas para conversar alcance y enfoque. Directo y sin rodeos."
+        eyebrow="Proyectos para mirar de cerca"
+        variant="projects"
+        title={<>Proyectos que convierten ideas en <span className="text-magenta">herramientas útiles.</span></>}
+        lead="Mira cómo pensamos, diseñamos y aterrizamos soluciones para distintas formas de trabajar."
         linkHref="/contact"
-        linkLabel="Conversar un proyecto similar"
+        linkLabel="Hablemos de algo parecido"
       />
       <div className="mx-auto w-[min(100%-2rem,72rem)] space-y-14 py-14 sm:py-20">
         {PROJECTS.map((project, index) => {
