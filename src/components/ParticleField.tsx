@@ -50,6 +50,7 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
     const pointer = { active: false, x: 0, y: 0 };
 
     const draw = () => {
+      const linkDistance = width < 640 ? 125 : LINK_DISTANCE;
       context.clearRect(0, 0, width, height);
 
       for (let firstIndex = 0; firstIndex < particles.length; firstIndex += 1) {
@@ -61,9 +62,9 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
           const distanceY = first.y - second.y;
           const distance = Math.hypot(distanceX, distanceY);
 
-          if (distance > LINK_DISTANCE) continue;
+          if (distance > linkDistance) continue;
 
-          const opacity = (1 - distance / LINK_DISTANCE) * 0.38;
+          const opacity = (1 - distance / linkDistance) * 0.38;
           context.beginPath();
           context.moveTo(first.x, first.y);
           context.lineTo(second.x, second.y);
@@ -92,7 +93,9 @@ export default function ParticleField({ className = "" }: ParticleFieldProps) {
       canvas.height = Math.floor(height * deviceScale);
       context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
 
-      const amount = Math.min(92, Math.max(46, Math.round((width * height) / 14000)));
+      const amount = width < 640
+        ? Math.min(44, Math.max(27, Math.round(Math.round((width * height) / 26000) * 1.7)))
+        : Math.min(92, Math.max(46, Math.round((width * height) / 14000)));
       const margin = Math.min(72, Math.max(20, Math.min(width, height) * 0.14));
       const spreadX = Math.max(1, width - margin * 2);
       const spreadY = Math.max(1, height - margin * 2);
