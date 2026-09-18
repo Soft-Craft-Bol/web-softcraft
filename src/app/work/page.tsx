@@ -16,7 +16,7 @@ export default function WorkPage() {
   return (
     <>
       <PageIntro
-        title={<>Demos que muestran cómo <span className="text-gold">pensamos.</span></>}
+        title={<>Proyectos que muestran cómo <span className="text-gold">pensamos.</span></>}
         lead="Cuatro piezas para conversar alcance y enfoque. Directo y sin rodeos."
         linkHref="/contact"
         linkLabel="Conversar un proyecto similar"
@@ -44,7 +44,7 @@ export default function WorkPage() {
                   <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-abyss/70 via-transparent to-transparent" />
                 </div>
                 <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-[#1c0a18]/95 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-wider text-gold">
-                  <Icon aria-hidden="true" className="h-3.5 w-3.5" /> Demo · {project.category}
+                  <Icon aria-hidden="true" className="h-3.5 w-3.5" /> {project.category}
                 </span>
                 <span aria-hidden="true" className="absolute bottom-3 right-5 font-mono text-5xl font-bold text-white/15">
                   {String(index + 1).padStart(2, "0")}

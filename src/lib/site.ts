@@ -322,7 +322,7 @@ export const VALUES = [
   {
     index: "02",
     title: "Transparencia continua",
-    description: "Cada avance y ajuste de alcance se conversa con demos funcionales.",
+    description: "Cada entrega y ajuste de alcance se conversa con avances funcionales.",
   },
   {
     index: "03",

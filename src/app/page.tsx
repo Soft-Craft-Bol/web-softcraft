@@ -176,7 +176,7 @@ export default function Home() {
         <div className="mx-auto w-[min(100%-2rem,72rem)] py-16 sm:py-24">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 id="destacados-title" className="max-w-[16ch] text-3xl font-semibold tracking-tight text-cream sm:text-5xl">
-              Demos que se pueden <span className="text-gold">tocar.</span>
+              Proyectos que se pueden <span className="text-gold">explorar.</span>
             </h2>
             <Link href="/work" className="inline-flex min-h-[44px] items-center gap-2 text-sm font-bold text-gold hover:translate-x-0.5 transition-transform">
               Todos los proyectos <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />
@@ -194,7 +194,7 @@ export default function Home() {
                     className="object-cover object-top"
                   />
                   <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-[#1c0a18]/95 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-wider text-gold">
-                    Demo · {project.category}
+                    {project.category}
                   </span>
                 </div>
                 <div className="space-y-2 p-6">

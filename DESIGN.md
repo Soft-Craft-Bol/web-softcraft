@@ -88,7 +88,7 @@ components:
     padding: "{spacing.block}"
   nav-item-active:
     textColor: "var(--sc-ink)"
-  demo-stamp:
+  category-stamp:
     backgroundColor: "{colors.yellow-block}"
     textColor: "{colors.light-ink}"
     padding: "0.45rem 0.65rem"
@@ -205,9 +205,9 @@ Texto e iconos visibles, tinta secundaria en reposo; activo con tinta principal 
 
 ### Catálogo, galería y secuencia
 
-Aunque mantienen nombres de archivo terminados en Slider, ServiceSlider usa `details/summary` nativos (primer servicio abierto; varios pueden estar abiertos), WorkSlider contiene una galería de cuatro demos y ProcessSlider una lista ordenada de seis etapas. No describirlos como carruseles ni prometer autoplay.
+Aunque mantienen nombres de archivo terminados en Slider, ServiceSlider usa `details/summary` nativos (primer servicio abierto; varios pueden estar abiertos), WorkSlider contiene una galería de cuatro proyectos y ProcessSlider una lista ordenada de seis etapas. No describirlos como carruseles ni prometer autoplay.
 
-Servicios alterna iconos magenta/amarillo/coral y gira el signo + al abrir; foco de summary de 3px y separación 5px. Proyectos conserva sello «Demo / ejemplo» con fondo amarillo bloque y tinta ciruela clara del frontmatter en ambos temas, imagen con recorte de cubierta y zoom de hover de 1.035; el sello es informativo, no un filtro. Se retiraron del marcado las etiquetas work-category y footer-kicker; sus selectores residuales no definen componentes activos. Proceso mantiene numeración, descripción y expectativa disponibles sin interacción.
+Servicios alterna iconos magenta/amarillo/coral y gira el signo + al abrir; foco de summary de 3px y separación 5px. Proyectos muestra sello de categoría con fondo amarillo bloque y tinta ciruela clara del frontmatter en ambos temas, imagen con recorte de cubierta y zoom de hover de 1.035; el sello es informativo, no un filtro. Se retiraron del marcado las etiquetas work-category y footer-kicker; sus selectores residuales no definen componentes activos. Proceso mantiene numeración, descripción y expectativa disponibles sin interacción.
 
 ### Home y partículas
 
@@ -231,7 +231,7 @@ Las tres cortinas púrpuras siguen en Transition y globals.css como transición 
 - **Don't** Restablecer señal escasa, naranja único o fondos azul oscuro como identidad global.
 - **Don't** Reintroducir el panel orbital artificial del Home ni confundirlo con las partículas conservadas.
 - **Don't** Convertir las clases sin uso o los defectos de contraste, recorte y movimiento en reglas de diseño.
-- **Don't** Presentar demos o bandas de capacidades como resultados comerciales o personas verificadas.
-- **Don't** Simular entrega o confirmación del formulario visual.
+- **Don't** Presentar proyectos o bandas de capacidades como resultados comerciales o personas verificadas.
+- **Don't** Simular entrega o confirmación del formulario.
 
 El sidecar contiene muestras aisladas, metadatos y rampas tonales sintéticas para el panel; estas rampas no son nuevos tokens de producción. Esta extracción registra código y decisiones, no legitima recortes, contraste insuficiente ni estados inaccesibles.
