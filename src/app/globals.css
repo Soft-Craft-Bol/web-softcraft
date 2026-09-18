@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/* SoftCraft Neón: sistema oscuro único. Paleta del logo llevada a luz neón. */
+@theme {
+  --color-abyss: #12060f;
+  --color-plum: #1a0a16;
+  --color-panel: #241022;
+  --color-panel2: #31152c;
+  --color-cream: #fff3ec;
+  --color-haze: #d9c3d3;
+  --color-dim: #a98fa2;
+  --color-magenta: #ff2e88;
+  --color-viol: #b026ff;
+  --color-coral: #ff8a5c;
+  --color-gold: #ffd34b;
+  --color-rose: #ff6f9d;
+  --color-deep: #9a0389;
+
+  --font-sans: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --animate-float: float 9s ease-in-out infinite alternate;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-pulse-dot: pulse-dot 2.6s ease-in-out infinite;
+  --animate-cue: cue-drop 2.2s ease-in-out infinite;
+  --animate-morph: morph 7s ease-in-out infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translate3d(-1.5%, -1%, 0) scale(1); }
+  to { transform: translate3d(1.5%, 1.2%, 0) scale(1.06); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 5px rgba(255, 46, 136, 0.22); transform: scale(1); }
+  50% { box-shadow: 0 0 0 9px rgba(255, 46, 136, 0.08); transform: scale(1.12); }
+}
+
+@keyframes cue-drop {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.55; }
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 46% 54% 52% 48% / 24% 28% 24% 26%; transform: rotate(-4deg); }
+  50% { border-radius: 54% 46% 44% 56% / 30% 24% 28% 22%; transform: rotate(-2deg) translateY(-4px); }
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #c81e8e #12060f;
+  text-underline-offset: 0.22em;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-abyss);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: rgba(255, 46, 136, 0.4);
+  color: var(--color-cream);
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-abyss); }
+::-webkit-scrollbar-thumb {
+  border: 2px solid var(--color-abyss);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--color-magenta), var(--color-deep));
+}
+
+input, textarea { caret-color: var(--color-rose); }
+
+a, button, input, select, textarea { font: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Acceso rápido por teclado */
+.skip-link {
+  position: fixed;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 200;
+  padding: 0.7rem 1rem;
+  border-radius: 0.6rem;
+  background: var(--color-cream);
+  color: var(--color-abyss);
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-160%);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.skip-link:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Grano fílmico global, muy tenue */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Brillo que cruza el botón principal */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: -30%;
+  bottom: -30%;
+  left: -24%;
+  width: 44%;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: translateX(-140%) skewX(-14deg);
+  opacity: 0;
+}
+
+.btn-shine:hover::after,
+.btn-shine:focus-visible::after {
+  opacity: 1;
+  animation: shine-sweep 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes shine-sweep {
+  from { transform: translateX(-140%) skewX(-14deg); }
+  to { transform: translateX(340%) skewX(-14deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

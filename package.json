@@ -1,32 +1,28 @@
 {
-  "name": "portafolio-softcraft",
+  "name": "softcraft-neon",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint"
   },
   "dependencies": {
-    "@next/font": "13.4.4",
-    "framer-motion": "^10.12.16",
-    "gsap": "^3.15.0",
-    "next": "13.4.3",
-    "react": "18.2.0",
-    "react-countup": "^6.4.2",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.8.0",
-    "react-tsparticles": "^2.9.3",
-    "swiper": "^9.4.1",
-    "tailwind-scrollbar": "^3.0.4",
-    "tsparticles": "^2.9.3"
+    "next": "16.3.5",
+    "ogl": "^1.0.11",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-icons": "^5.7.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "eslint": "8.41.0",
-    "eslint-config-next": "13.4.3",
-    "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.2"
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
