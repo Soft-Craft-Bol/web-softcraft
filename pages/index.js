@@ -151,7 +151,7 @@ const Home = () => {
 
       {/* Franja de contacto final */}
       <section className="page-section home-contact-band py-16">
-        <div className="site-container contact-band-inner flex flex-col md:flex-row items-center justify-between gap-8 p-8 md:p-12 rounded-3xl border border-[var(--sc-line)] bg-[var(--sc-surface)]">
+        <div className="site-container page-cta contact-band-inner flex flex-col md:flex-row items-center justify-between gap-8 p-8 md:p-12 rounded-3xl border border-[var(--sc-line)] bg-[var(--sc-surface)]">
           <div className="max-w-xl space-y-2 text-center md:text-left">
             <h2 className="text-2xl sm:text-3xl font-bold text-[var(--sc-ink)]">
               ¿Tienes una idea, un flujo manual o una herramienta que se quedó corta?
@@ -161,7 +161,7 @@ const Home = () => {
             </p>
           </div>
           <Link href="/contact" className="button-primary flex-shrink-0">
-            <span>Iniciar conversación</span>
+            <span>Contar el desafío</span>
             <HiArrowUpRight aria-hidden="true" />
           </Link>
         </div>

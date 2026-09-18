@@ -40,7 +40,7 @@ const Process = () => {
 
       {/* Franja de transparencia */}
       <section className="page-section process-note-section pt-8">
-        <div className="site-container process-note-grid flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)]">
+        <div className="site-container page-cta process-note-grid flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)]">
           <div className="space-y-1 text-center sm:text-left">
             <h2 className="text-xl sm:text-2xl font-bold text-[var(--sc-ink)]">
               El alcance se define con rigor y honestidad.
@@ -50,7 +50,7 @@ const Process = () => {
             </p>
           </div>
           <Link href="/contact" className="button-primary flex-shrink-0">
-            <span>Conversar requerimientos</span>
+            <span>Definir próximos pasos</span>
             <HiArrowUpRight aria-hidden="true" />
           </Link>
         </div>

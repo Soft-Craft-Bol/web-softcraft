@@ -52,7 +52,7 @@ const About = () => {
               SoftCraft Bolivia es un estudio de desarrollo de software e ingeniería digital. Ayudamos a empresas, instituciones y fundadores a transformar problemas complejos en herramientas útiles, estables y preparadas para el futuro.
             </p>
             <Link href="/contact" className="text-link inline-flex items-center gap-1.5 font-semibold text-[var(--sc-accent)] hover:text-[var(--sc-accent-hot)]">
-              <span>Iniciar conversación</span>
+              <span>Presentar un desafío</span>
               <HiArrowUpRight aria-hidden="true" />
             </Link>
           </div>
@@ -127,7 +127,7 @@ const About = () => {
 
       {/* Franja CTA */}
       <section className="page-section about-cta-section pt-8">
-        <div className="site-container about-cta-inner flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)]">
+        <div className="site-container page-cta about-cta-inner flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)]">
           <div className="space-y-1 text-center sm:text-left">
             <h2 className="text-xl sm:text-2xl font-bold text-[var(--sc-ink)]">
               Trae un problema concreto, no un documento perfecto.
@@ -137,7 +137,7 @@ const About = () => {
             </p>
           </div>
           <Link href="/contact" className="button-primary flex-shrink-0">
-            <span>Conversar con nosotros</span>
+            <span>Definir el siguiente paso</span>
             <HiArrowUpRight aria-hidden="true" />
           </Link>
         </div>

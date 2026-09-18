@@ -40,7 +40,7 @@ const Work = () => {
 
       {/* Franja CTA */}
       <section className="page-section work-cta-section pt-8">
-        <div className="site-container work-cta-inner flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)]">
+        <div className="site-container page-cta work-cta-inner flex flex-col sm:flex-row items-center justify-between gap-6 p-8 sm:p-10 rounded-2xl border border-[var(--sc-line)] bg-[var(--sc-surface)]">
           <div className="space-y-1 text-center sm:text-left">
             <h2 className="text-xl sm:text-2xl font-bold text-[var(--sc-ink)]">
               ¿Tu desafío operativo puede ser el próximo desarrollo?
@@ -50,7 +50,7 @@ const Work = () => {
             </p>
           </div>
           <Link href="/contact" className="button-primary flex-shrink-0">
-            <span>Cuéntanos tu idea</span>
+            <span>Contar el contexto</span>
             <HiArrowUpRight aria-hidden="true" />
           </Link>
         </div>

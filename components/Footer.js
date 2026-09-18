@@ -8,10 +8,10 @@ const Footer = () => {
       <div className="site-container">
         <div className="footer-cta">
           <div>
-            <h2>Si ya tienes el problema, conversemos.</h2>
+            <h2>¿Hablamos de lo que sigue?</h2>
           </div>
           <Link href="/contact" className="text-link text-link-light">
-            Abrir conversación <HiArrowUpRight aria-hidden="true" />
+            Contactar al equipo <HiArrowUpRight aria-hidden="true" />
           </Link>
         </div>
 
