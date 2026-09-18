@@ -38,7 +38,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate aria-label="Formulario de contacto" className="rounded-2xl border border-white/12 bg-panel p-6 sm:p-8">
+    <form data-motion="form" onSubmit={handleSubmit} noValidate aria-label="Formulario de contacto" className="rounded-2xl border border-white/12 bg-panel p-6 sm:p-8">
       <h2 className="text-xl font-bold text-cream sm:text-2xl">Describe tu desafío</h2>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">

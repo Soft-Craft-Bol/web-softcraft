@@ -273,8 +273,8 @@ export default function ServiceExplorer() {
   };
 
   return (
-    <div className="space-y-7" onFocusCapture={handleFocusCapture} onBlurCapture={handleBlurCapture}>
-      <div className="flex flex-wrap items-end justify-between gap-4">
+    <div data-motion="carousel" className="space-y-7" onFocusCapture={handleFocusCapture} onBlurCapture={handleBlurCapture}>
+      <div data-motion-carousel-heading="" className="flex flex-wrap items-end justify-between gap-4">
         <h2 className="max-w-[18ch] text-2xl font-semibold tracking-tight text-cream sm:text-3xl">
           Empieza por lo que más te quita tiempo.
         </h2>
@@ -296,6 +296,7 @@ export default function ServiceExplorer() {
         onPointerCancel={handlePointerCancel}
         onWheel={handleWheel}
         onScroll={handleTrackScroll}
+        data-motion-carousel-track=""
         className="service-track isolate flex w-full min-w-0 snap-x snap-mandatory gap-4 overflow-x-hidden overscroll-x-contain px-1 pb-3 pr-8 select-none touch-pan-y lg:pr-1"
       >
         {serviceSlides.map(({ service, serviceIndex, renderIndex }) => {

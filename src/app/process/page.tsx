@@ -30,9 +30,9 @@ export default function ProcessPage() {
             </p>
           </div>
 
-          <ol className="border-y border-white/10">
+          <ol data-motion="stagger" className="border-y border-white/10">
             {PROCESS.map((step) => (
-              <li key={step.number} className="grid gap-5 border-b border-white/10 py-7 last:border-b-0 sm:grid-cols-[5rem_1fr_0.72fr] sm:gap-8 sm:py-9">
+              <li data-motion-item="" key={step.number} className="grid gap-5 border-b border-white/10 py-7 last:border-b-0 sm:grid-cols-[5rem_1fr_0.72fr] sm:gap-8 sm:py-9">
                 <p aria-hidden="true" className="font-mono text-3xl font-bold text-magenta/70 sm:text-4xl">
                   {step.number}
                 </p>

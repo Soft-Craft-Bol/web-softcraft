@@ -32,7 +32,7 @@ export default function TeamPage() {
             </p>
           </div>
 
-          <article className="overflow-hidden rounded-2xl border border-white/15 bg-panel">
+          <article data-motion="reveal" data-motion-direction="right" className="overflow-hidden rounded-2xl border border-white/15 bg-panel">
             <div className="grid lg:grid-cols-[0.82fr_1.18fr]">
               <div className="relative min-h-[260px] overflow-hidden bg-gradient-to-br from-magenta/35 via-deep to-abyss p-6 sm:min-h-[320px]">
                 <div aria-hidden="true" className="absolute -right-10 -top-16 h-64 w-64 rounded-full border border-gold/30 bg-gold/10 blur-[1px]" />
@@ -62,9 +62,10 @@ export default function TeamPage() {
           </article>
         </section>
 
-        <ul aria-label="Especialidades del equipo" className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <ul data-motion="stagger" aria-label="Especialidades del equipo" className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {TEAM.map((member) => (
             <li
+              data-motion-item=""
               key={member.name}
               className="group overflow-hidden rounded-2xl border border-white/12 bg-panel transition-colors duration-200 hover:border-magenta/60"
             >

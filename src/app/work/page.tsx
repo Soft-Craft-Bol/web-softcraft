@@ -31,6 +31,8 @@ export default function WorkPage() {
             <article
               key={project.id}
               aria-labelledby={`${project.id}-title`}
+              data-motion="reveal"
+              data-motion-direction={flip ? "left" : "right"}
               className={`grid items-center gap-6 lg:grid-cols-2 lg:gap-12 ${flip ? "" : ""}`}
             >
               <div className={`relative overflow-hidden rounded-2xl border border-white/12 ${flip ? "lg:order-2" : ""}`}>

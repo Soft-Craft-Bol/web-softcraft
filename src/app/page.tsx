@@ -27,16 +27,16 @@ const accentBorder: Record<string, string> = {
 };
 
 const homeCardStyles = [
-  "border-magenta/35 bg-gradient-to-br from-magenta/25 via-panel to-panel md:translate-y-3",
-  "border-gold/35 bg-gradient-to-br from-gold/20 via-panel to-panel md:-translate-y-2",
-  "border-coral/35 bg-gradient-to-br from-coral/25 via-panel to-panel md:translate-y-7",
+  "border-magenta/35 bg-gradient-to-br from-magenta/25 via-panel to-panel",
+  "border-gold/35 bg-gradient-to-br from-gold/20 via-panel to-panel",
+  "border-coral/35 bg-gradient-to-br from-coral/25 via-panel to-panel",
 ];
 
 export default function Home() {
   return (
     <>
       {/* HERO: aura + red interactiva inspirada en la antigua portada */}
-      <section aria-labelledby="home-title" className="relative overflow-hidden border-b border-white/10">
+      <section data-motion="hero" aria-labelledby="home-title" className="relative overflow-hidden border-b border-white/10">
         <NeonBackdrop kind="aurora" className="z-0" />
         <div className="pointer-events-none absolute inset-0 z-[2] opacity-100">
           <ParticleField />
@@ -52,13 +52,13 @@ export default function Home() {
 
         <div className="relative z-[3] mx-auto grid w-[min(100%-2rem,72rem)] gap-10 py-16 sm:py-24 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-14">
           <div className="max-w-2xl space-y-6">
-            <h1 id="home-title" className="text-[clamp(2.7rem,7vw,5.2rem)] font-bold leading-[1.02] tracking-tight text-cream">
+            <h1 data-motion-hero-title="" id="home-title" className="text-[clamp(2.7rem,7vw,5.2rem)] font-bold leading-[1.02] tracking-tight text-cream">
               El software debe <span className="text-gold">entender</span> tu forma de trabajar.
             </h1>
-            <p className="max-w-[52ch] text-base leading-relaxed text-haze sm:text-lg">
+            <p data-motion-hero-lead="" className="max-w-[52ch] text-base leading-relaxed text-haze sm:text-lg">
               Convertimos procesos enredados, tareas repetitivas e ideas pendientes en herramientas que encajan con tu forma de trabajar.
             </p>
-            <div className="flex flex-wrap items-center gap-3 pt-1">
+            <div data-motion-hero-actions="" className="flex flex-wrap items-center gap-3 pt-1">
               <TransitionLink
                 href="/contact"
                 className="btn-shine inline-flex min-h-[52px] items-center gap-2 rounded-lg bg-gradient-to-r from-magenta to-viol px-6 text-sm font-bold text-white shadow-[0_0_26px_rgba(255,46,136,0.4)] transition-transform hover:-translate-y-0.5"
@@ -74,7 +74,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hidden items-center justify-center py-2 sm:py-6 lg:flex">
+          <div data-motion-hero-mark="" className="hidden items-center justify-center py-2 sm:py-6 lg:flex">
             <Image
               src={brandMark}
               alt="SoftCraft Bolivia"
@@ -89,6 +89,7 @@ export default function Home() {
         <a
           href="#recorrido"
           aria-label="Bajar al recorrido de servicios"
+          data-motion-hero-cue=""
           className="absolute bottom-4 right-4 hidden min-h-[44px] items-center gap-2 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-dim transition-colors hover:text-cream sm:inline-flex lg:right-10"
         >
           Ver propuesta <HiArrowDown aria-hidden="true" className="h-4 w-4 animate-cue text-gold" />
@@ -106,14 +107,15 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div data-motion="stagger" className="mt-10 grid items-stretch gap-5 md:auto-rows-fr md:grid-cols-3">
           {SERVICES.slice(2, 5).map((service, index) => {
             const Icon = service.icon;
             return (
               <TransitionLink
                 key={service.title}
                 href="/services"
-                className={`group flex min-h-[240px] flex-col justify-between rounded-2xl border p-7 transition-all duration-200 hover:-translate-y-1 ${homeCardStyles[index]} ${accentBorder[service.accent]} hover:shadow-[0_18px_50px_rgba(255,46,136,0.16)]`}
+                data-motion-item=""
+                className={`group flex h-full min-h-[240px] flex-col justify-between rounded-2xl border p-7 transition-all duration-200 hover:-translate-y-1 ${homeCardStyles[index]} ${accentBorder[service.accent]} hover:shadow-[0_18px_50px_rgba(255,46,136,0.16)]`}
               >
                 <div className="space-y-4">
                   <div className="flex items-start justify-between gap-4">
@@ -146,9 +148,9 @@ export default function Home() {
               Todos los proyectos <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />
             </TransitionLink>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div data-motion="stagger" className="mt-10 grid gap-5 sm:grid-cols-2">
             {PROJECTS.slice(0, 2).map((project) => (
-              <article key={project.id} className="group overflow-hidden rounded-2xl border border-white/12 bg-abyss transition-colors hover:border-magenta/60">
+              <article data-motion-item="" key={project.id} className="group overflow-hidden rounded-2xl border border-white/12 bg-abyss transition-colors hover:border-magenta/60">
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
                     src={project.image}

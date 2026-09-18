@@ -77,7 +77,7 @@ export default function PageIntro({
   const centered = variant === "testimonials";
 
   return (
-    <section className={`relative overflow-hidden border-b border-white/10 ${styles.section}`}>
+    <section data-motion="intro" className={`relative overflow-hidden border-b border-white/10 ${styles.section}`}>
       {!quiet && (
         <div aria-hidden="true" className={`pointer-events-none absolute inset-0 ${styles.glow}`} />
       )}
@@ -111,20 +111,21 @@ export default function PageIntro({
       >
         <div className={centered ? "mx-auto max-w-3xl" : ""}>
           {eyebrow && (
-            <p className={`mb-4 font-mono text-[0.68rem] uppercase tracking-[0.16em] ${styles.eyebrow}`}>
+            <p data-motion-intro-eyebrow="" className={`mb-4 font-mono text-[0.68rem] uppercase tracking-[0.16em] ${styles.eyebrow}`}>
               {eyebrow}
             </p>
           )}
-          <h1 className={`max-w-[18ch] text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl ${styles.title} ${centered ? "mx-auto" : ""}`}>
+          <h1 data-motion-intro-title="" className={`max-w-[18ch] text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl ${styles.title} ${centered ? "mx-auto" : ""}`}>
             {title}
           </h1>
         </div>
 
         <div className={`space-y-4 ${centered ? "mx-auto mt-6 max-w-2xl" : ""}`}>
-          <p className={`max-w-[52ch] text-base leading-relaxed ${styles.lead} ${centered ? "mx-auto" : ""}`}>{lead}</p>
+          <p data-motion-intro-lead="" className={`max-w-[52ch] text-base leading-relaxed ${styles.lead} ${centered ? "mx-auto" : ""}`}>{lead}</p>
           {linkHref && linkLabel && (
             <TransitionLink
               href={linkHref}
+              data-motion-intro-link=""
               className={`inline-flex min-h-[44px] items-center gap-2 border-b pb-1 text-sm font-bold transition-colors ${styles.link}`}
             >
               {linkLabel} <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />
@@ -132,7 +133,7 @@ export default function PageIntro({
           )}
         </div>
       </div>
-      <div aria-hidden="true" className={`h-[6px] ${styles.rule}`} />
+      <div data-motion-intro-rule="" aria-hidden="true" className={`h-[6px] ${styles.rule}`} />
     </section>
   );
 }

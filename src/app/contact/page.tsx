@@ -52,7 +52,7 @@ export default function ContactPage() {
             <h2 className="text-xl font-bold text-cream sm:text-2xl">Canales directos</h2>
             <p className="mt-1 text-sm text-dim">Atención técnica y comercial</p>
           </div>
-          <ul className="space-y-3">
+          <ul data-motion="stagger" className="space-y-3">
             {channels.map((channel) => {
               const Icon = channel.icon;
               const inner = (
@@ -76,7 +76,7 @@ export default function ContactPage() {
               const classes =
                 "flex min-h-[76px] items-center gap-4 rounded-xl border border-white/12 bg-panel p-4 transition-colors hover:border-magenta/60";
               return (
-                <li key={channel.label}>
+                <li data-motion-item="" key={channel.label}>
                   {channel.href ? (
                     <a
                       href={channel.href}

@@ -22,9 +22,9 @@ export default function TestimonialsPage() {
       />
       <div className="mx-auto w-[min(100%-2rem,72rem)] py-14 sm:py-20">
 
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
+        <div data-motion="stagger" className="mt-8 grid gap-5 md:grid-cols-2">
           {TESTIMONIALS.map((item) => (
-            <figure key={item.name} className="flex flex-col justify-between gap-5 rounded-2xl border border-white/12 bg-gradient-to-br from-panel2 via-panel to-plum p-7 transition-transform hover:-translate-y-1">
+            <figure data-motion-item="" key={item.name} className="flex flex-col justify-between gap-5 rounded-2xl border border-white/12 bg-gradient-to-br from-panel2 via-panel to-plum p-7 transition-transform hover:-translate-y-1">
               <div>
                 <span aria-hidden="true" className="font-serif text-7xl leading-none text-coral/75">“</span>
                 <blockquote className="-mt-3 text-[0.95rem] leading-relaxed text-cream">
