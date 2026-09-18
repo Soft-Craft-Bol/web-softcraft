@@ -17,12 +17,17 @@ function prefersReducedMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+function resetScroll(): void {
+  window.scrollTo(0, 0);
+}
+
 function navigateTo(href: string, router: AppRouterInstance): void {
-  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  router.push(href, { scroll: true });
+  router.push(href, { scroll: false });
 }
 
 export function animatePageIn(): gsap.core.Timeline | null {
+  resetScroll();
+
   const element = getTransitionElement();
   if (!element) return null;
 
