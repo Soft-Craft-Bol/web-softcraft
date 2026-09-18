@@ -16,7 +16,7 @@ export default function TeamPage() {
   return (
     <>
       <PageIntro
-        title={<>Talento detrás de cada <span className="text-gold">solución.</span></>}
+        title={<>Talento detrás de cada <span className="text-rose/90">solución.</span></>}
         lead="Ingeniería rigurosa, diseño centrado en el usuario e IA práctica para sistemas confiables y fáciles de operar."
         linkHref="/contact"
         linkLabel="Trabajar con nosotros"

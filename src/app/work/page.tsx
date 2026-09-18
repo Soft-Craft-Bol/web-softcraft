@@ -18,7 +18,7 @@ export default function WorkPage() {
       <PageIntro
         eyebrow="Proyectos para mirar de cerca"
         variant="projects"
-        title={<>Proyectos que convierten ideas en <span className="text-magenta">herramientas útiles.</span></>}
+        title={<>Proyectos que convierten ideas en <span className="text-magenta/90">herramientas útiles.</span></>}
         lead="Mira cómo pensamos, diseñamos y aterrizamos soluciones para distintas formas de trabajar."
         linkHref="/contact"
         linkLabel="Hablemos de algo parecido"

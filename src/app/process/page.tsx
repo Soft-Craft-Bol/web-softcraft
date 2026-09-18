@@ -13,7 +13,7 @@ export default function ProcessPage() {
   return (
     <>
       <PageIntro
-        title={<>Una ruta clara, sin <span className="text-gold">caja negra.</span></>}
+        title={<>Una ruta clara, sin <span className="text-viol/90">caja negra.</span></>}
         lead="Cada etapa entrega algo revisable: criterio, mapa, avances funcionales y continuidad. Siempre sabrás en qué punto está tu proyecto."
         linkHref="/contact"
         linkLabel="Iniciar la conversación"

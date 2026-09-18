@@ -142,7 +142,7 @@ export default function Home() {
         <div className="mx-auto w-[min(100%-2rem,72rem)] py-16 sm:py-24">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 id="destacados-title" className="max-w-[16ch] text-3xl font-semibold tracking-tight text-cream sm:text-5xl">
-              Proyectos que se pueden <span className="text-gold">explorar.</span>
+              Proyectos que se pueden <span className="text-coral/90">explorar.</span>
             </h2>
             <TransitionLink href="/work" className="inline-flex min-h-[44px] items-center gap-2 text-sm font-bold text-gold hover:translate-x-0.5 transition-transform">
               Todos los proyectos <HiArrowUpRight aria-hidden="true" className="h-4 w-4" />

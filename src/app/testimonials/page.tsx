@@ -15,7 +15,7 @@ export default function TestimonialsPage() {
       <PageIntro
         eyebrow="Experiencias de trabajo"
         variant="testimonials"
-        title={<>Lo que dicen quienes ya <span className="text-gold">trabajaron con nosotros.</span></>}
+        title={<>Lo que dicen quienes ya <span className="text-coral/90">trabajaron con nosotros.</span></>}
         lead="Cada historia empieza con una forma particular de trabajar y termina con más claridad para avanzar."
         linkHref="/contact"
         linkLabel="Cuéntanos tu caso"

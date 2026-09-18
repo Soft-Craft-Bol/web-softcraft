@@ -14,7 +14,7 @@ export default function AboutPage() {
   return (
     <>
       <PageIntro
-        title={<>No desarrollamos tecnología por <span className="text-gold">inercia.</span></>}
+        title={<>No desarrollamos tecnología por <span className="text-rose/90">inercia.</span></>}
         lead="SoftCraft Bolivia es un estudio de desarrollo de software e ingeniería digital. Ayudamos a empresas, instituciones y fundadores a transformar problemas complejos en herramientas útiles y estables."
         linkHref="/contact"
         linkLabel="Presentar un desafío"

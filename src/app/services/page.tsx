@@ -15,7 +15,7 @@ export default function ServicesPage() {
       <PageIntro
         eyebrow="Soluciones claras para empezar"
         variant="services"
-        title={<>Soluciones para que tu negocio avance <span className="text-gold">sin tantas vueltas.</span></>}
+        title={<>Soluciones para que tu negocio avance <span className="text-coral/90">sin tantas vueltas.</span></>}
         lead="Empezamos por entender qué te quita tiempo y elegimos la herramienta que mejor encaja contigo."
         linkHref="/contact"
         linkLabel="Cuéntanos qué te está frenando"
