@@ -44,7 +44,7 @@ export default function ContactPage() {
     <>
       <PageIntro
         title={<>La solución empieza con una <span className="text-gold">conversación.</span></>}
-        lead="Escríbenos directo o deja tu mensaje en el formulario visual para coordinar una primera reunión de exploración."
+        lead="Escríbenos directo o deja tu mensaje en el formulario para coordinar una primera reunión de exploración."
       />
       <div className="mx-auto grid w-[min(100%-2rem,72rem)] items-start gap-8 py-14 sm:py-20 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
         <div className="space-y-5">

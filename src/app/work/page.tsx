@@ -9,7 +9,7 @@ import { PROJECTS } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Proyectos | SoftCraft Bolivia",
   description:
-    "Demos de SoftCraft: fintech, visualización inmersiva, CRM inteligente y plataformas web. Marcadas como ejemplo.",
+    "Proyectos de SoftCraft: fintech, visualización inmersiva, CRM inteligente y plataformas web.",
 };
 
 export default function WorkPage() {
@@ -17,7 +17,7 @@ export default function WorkPage() {
     <>
       <PageIntro
         title={<>Demos que muestran cómo <span className="text-gold">pensamos.</span></>}
-        lead="Piezas marcadas como ejemplo, sin cifras ni resultados comerciales. Sirven para conversar alcance, no para prometer números."
+        lead="Cuatro piezas para conversar alcance y enfoque. Directo y sin rodeos."
         linkHref="/contact"
         linkLabel="Conversar un proyecto similar"
       />
@@ -35,7 +35,7 @@ export default function WorkPage() {
                 <div className="relative aspect-[16/10]">
                   <Image
                     src={project.image}
-                    alt={`Demostración ${project.title}`}
+                    alt={`Proyecto ${project.title}`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover object-top"

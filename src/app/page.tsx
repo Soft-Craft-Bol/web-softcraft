@@ -4,6 +4,7 @@ import Link from "next/link";
 import { HiArrowDown, HiArrowUpRight, HiCheck, HiPlay } from "react-icons/hi2";
 import CtaBand from "@/components/CtaBand";
 import NeonBackdrop from "@/components/NeonBackdrop";
+import ParticleField from "@/components/ParticleField";
 import { PROJECTS, SERVICES, TECH_MARQUEE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -27,19 +28,22 @@ const accentBorder: Record<string, string> = {
 export default function Home() {
   return (
     <>
-      {/* HERO con grafo Galaxy */}
+      {/* HERO: aura + red interactiva inspirada en la antigua portada */}
       <section aria-labelledby="home-title" className="relative overflow-hidden border-b border-white/10">
         <NeonBackdrop kind="aurora" />
+        <div className="pointer-events-none absolute inset-0 z-[1] opacity-90">
+          <ParticleField />
+        </div>
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 z-0"
           style={{
             background:
               "linear-gradient(90deg, rgba(18,6,15,0.9) 0%, rgba(18,6,15,0.55) 55%, rgba(18,6,15,0.25) 100%), linear-gradient(0deg, rgba(18,6,15,0.5) 0%, transparent 40%)",
           }}
         />
 
-        <div className="relative mx-auto grid w-[min(100%-2rem,72rem)] gap-10 py-16 sm:py-24 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-14">
+        <div className="relative z-[2] mx-auto grid w-[min(100%-2rem,72rem)] gap-10 py-16 sm:py-24 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-14">
           <div className="max-w-2xl space-y-6">
             <p className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs text-haze backdrop-blur">
               <span aria-hidden="true" className="h-2 w-2 animate-pulse-dot rounded-full bg-magenta" />

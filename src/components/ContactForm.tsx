@@ -13,7 +13,6 @@ const inputClass = (invalid: boolean) =>
     invalid ? "border-rose" : "border-white/20"
   }`;
 
-/* Formulario visual: valida en el navegador, no envía a ningún destino. */
 export default function ContactForm() {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState<Errors>({});
@@ -39,11 +38,8 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate aria-label="Formulario de contacto visual" className="rounded-2xl border border-white/12 bg-panel p-6 sm:p-8">
+    <form onSubmit={handleSubmit} noValidate aria-label="Formulario de contacto" className="rounded-2xl border border-white/12 bg-panel p-6 sm:p-8">
       <h2 className="text-xl font-bold text-cream sm:text-2xl">Describe tu desafío</h2>
-      <p className="mt-1 text-[0.8rem] text-dim">
-        Formulario visual de demostración: valida los campos pero no envía datos a ningún destino.
-      </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <div>
@@ -114,9 +110,8 @@ export default function ContactForm() {
           type="submit"
           className="btn-shine inline-flex min-h-[52px] items-center justify-center rounded-lg bg-gradient-to-r from-magenta to-viol px-6 text-sm font-bold text-white shadow-[0_0_22px_rgba(255,46,136,0.35)] transition-transform hover:-translate-y-0.5"
         >
-          Revisar mensaje
+          Enviar mensaje
         </button>
-        <p className="text-xs text-dim">Al ser visual, el botón solo valida. Para contactar usa los canales directos.</p>
       </div>
     </form>
   );

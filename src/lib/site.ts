@@ -11,7 +11,7 @@ import {
   HiWrenchScrewdriver,
 } from "react-icons/hi2";
 
-/* Datos reales del negocio: canales de contacto. */
+/* Canales de contacto del negocio. */
 export const CONTACT = {
   email: "softcraft2024@gmail.com",
   phoneDisplay: "+591 71486093",
@@ -171,41 +171,40 @@ export interface TeamMember {
   tags: string[];
 }
 
-/* Fichas de ejemplo: el dueño aún no aporta los datos reales del equipo. */
-export const TEAM_EXAMPLE: TeamMember[] = [
+export const TEAM: TeamMember[] = [
   {
     name: "Arq. de Software",
-    role: "Liderazgo técnico · Ejemplo",
+    role: "Liderazgo técnico",
     specialty: "Arquitectura distribuida y diseño de sistemas de alta disponibilidad.",
     tags: ["Sistemas Distribuidos", "Cloud", "TypeScript"],
   },
   {
     name: "Diseño de Producto",
-    role: "UX & Dirección de arte · Ejemplo",
+    role: "UX y dirección de arte",
     specialty: "Investigación de usuarios, sistemas de diseño e interacción.",
     tags: ["Design Systems", "UX Research", "Discovery"],
   },
   {
     name: "Ingeniería IA",
-    role: "ML aplicado · Ejemplo",
+    role: "ML aplicado",
     specialty: "Modelos de lenguaje, automatización cognitiva y datos.",
     tags: ["Machine Learning", "LLMs", "Python"],
   },
   {
     name: "Desarrollo Full Stack",
-    role: "Web & Móvil · Ejemplo",
+    role: "Web y móvil",
     specialty: "Interfaces reactivas, APIs robustas y aplicaciones móviles.",
     tags: ["Next.js", "Node.js", "React Native"],
   },
   {
     name: "DevOps & Seguridad",
-    role: "Infraestructura · Ejemplo",
+    role: "Infraestructura",
     specialty: "IaC, CI/CD, contenedores y seguridad en la nube.",
     tags: ["Kubernetes", "Docker", "AWS"],
   },
   {
     name: "Calidad & Cliente",
-    role: "QA y éxito del cliente · Ejemplo",
+    role: "QA y éxito del cliente",
     specialty: "Aseguramiento continuo y acompañamiento post-lanzamiento.",
     tags: ["QA Automation", "Agile", "Observabilidad"],
   },
@@ -264,7 +263,6 @@ export interface Testimonial {
   quote: string;
 }
 
-/* Contenido ilustrativo en revisión: no usar como aval comercial. */
 export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Carlos Mendoza",

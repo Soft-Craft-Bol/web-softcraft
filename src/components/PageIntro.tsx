@@ -6,20 +6,23 @@ interface PageIntroProps {
   lead: string;
   linkHref?: string;
   linkLabel?: string;
+  quiet?: boolean;
 }
 
 /* Encabezado interior compartido: composición editorial con línea neón inferior. */
-export default function PageIntro({ title, lead, linkHref, linkLabel }: PageIntroProps) {
+export default function PageIntro({ title, lead, linkHref, linkLabel, quiet = false }: PageIntroProps) {
   return (
     <section className="relative overflow-hidden border-b border-white/10">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 55% 80% at 85% 20%, rgba(255,46,136,0.16), transparent 60%), radial-gradient(ellipse 40% 70% at 5% 90%, rgba(176,38,255,0.12), transparent 60%)",
-        }}
-      />
+      {!quiet && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 55% 80% at 85% 20%, rgba(255,46,136,0.16), transparent 60%), radial-gradient(ellipse 40% 70% at 5% 90%, rgba(176,38,255,0.12), transparent 60%)",
+          }}
+        />
+      )}
       <div className="relative mx-auto grid w-[min(100%-2rem,72rem)] gap-6 py-16 sm:py-20 lg:grid-cols-[1.25fr_0.75fr] lg:items-end lg:gap-12">
         <h1 className="max-w-[18ch] text-4xl font-semibold tracking-tight text-cream sm:text-5xl lg:text-6xl">
           {title}
