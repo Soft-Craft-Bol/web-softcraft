@@ -18,10 +18,18 @@ function prefersReducedMotion(): boolean {
 }
 
 function resetScroll(): void {
+  const root = document.documentElement;
+  const previousBehavior = root.style.scrollBehavior;
+
+  root.style.scrollBehavior = "auto";
   window.scrollTo(0, 0);
+  root.scrollTop = 0;
+  document.body.scrollTop = 0;
+  root.style.scrollBehavior = previousBehavior;
 }
 
 function navigateTo(href: string, router: AppRouterInstance): void {
+  resetScroll();
   router.push(href, { scroll: false });
 }
 
